@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/ShareInfo.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" class="active">交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="part1">
+		<p class="choice">
+			<a  href="javascript:void(0);" class="active-choice">全部帖子</a>
+			<em>|</em>
+			<a href="javascript:void(0);" >我的帖子</a>
+		</p>
+		<ul class="shareinfo-list"></ul>
+		<script id="shareinfoList"  type="text/x-jsrender" >
+		{{for #data}}
+			<li>
+				<div class="left-userinfo">
+					<img src="/TutorWebsite/static/images/head_pic1.jpg" alt="用户头像">
+					<p>{{:username}}</p>
+				</div>
+				<div class="center-shareinfo">
+					<p>
+					<span style="margin-right:5px;color:#11BB30;">[&nbsp;{{:shareTime}}&nbsp;]</span>
+					{{if shareinfo.length>100}}
+						{{:shareinfo.substring(0,100)}}...
+					{{else}}
+						{{:shareinfo}}
+					{{/if}}
+					</p>
+					<p class="to-detail"><a href="/TutorWebsite/pages/ShareInfoDetail.html?shareId={{:shareId}}">查看详情>></a></p>
+				</div>
+				
+			</li>
+		{{/for}}
+		</script>
+		<div class="user-part">
+			<img src="/TutorWebsite/static/images/head_pic2.jpg" alt="用户头像">
+			<a href="javascript:void(0);" id="show-publishblock">
+				<img src="/TutorWebsite/static/images/add_share.svg" alt="发布帖子">
+				<span>发布帖子</span>
+			</a>
+			
+			<!-- <p>
+				我的帖子：<a href="#">0</a>
+			</p>
+			<p>
+				我的评论：<a href="#">0</a>
+			</p>
+			<p>
+				我的回复：<a href="#">0</a>
+			</p>
+			<p>
+				我的收藏：<a href="#">0</a>
+			</p> -->
+		</div>
+	</div>
+	<div class="part2">
+		<ul class="tutor-pages">
+		</ul>
+	</div>
+</div>
+<!-- <div class="footer">
+	<div class="footer-content"></div>
+</div> -->
+<div class="over"></div>
+<div class="publish-shareinfo" >
+	<p>请填写要发布的内容：</p>
+	<textarea name="share-content" id="" cols="45" rows="5"></textarea>
+	<p>
+		<input type="button" value="发布" id="publish" onclick="ShareInfo.submitShareInfo();">
+		<input type="button" value="取消" id="cencel" >
+	</p>
+</div>
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/shareinfo.js"></script>
+<script type="text/javascript">
+ShareInfo.initPage();
+	$(function(){
+		$("#show-publishblock").click(function(){
+			$(".over").show();
+			$(".publish-shareinfo").show();
+		});
+		$("#cencel").click(function(){
+			$(".over").hide();
+			$(".publish-shareinfo").hide();
+		});
+		$(".choice>a").click(function(){
+			$(".choice>a").each(function(){
+				$(this).removeClass("active-choice");
+			})
+			$(this).addClass("active-choice");
+			ShareInfo.initPage();
+		})
+	});
+</script>
+</html>

@@ -1,0 +1,79 @@
+.content{
+	width: 100%;
+}
+.register-title{
+	width :950px;
+	height: 30px;
+	line-height: 30px;
+	position: relative;
+	margin: 20px 200px;
+	border:1px solid #E4E4E4;
+	background: white;
+	font-size:0.8em;
+	background: #11BB30;
+	color: white;
+	text-align:center;
+}
+
+.register-content
+{
+	width :950px;
+	height: 350px;
+	position: relative;
+	margin: -19px 200px 20px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	font-size: 15px;
+}
+.register-content>p
+{
+	width: 200px;
+	margin:30px 40px;
+	border-bottom: 1px solid #ccc;
+}
+.register-content>p>span.promit
+{
+	color: red;
+}
+.register-info{
+	margin: 20px 40px;
+	font-size: 18px;
+
+}
+.register-info>p>input,
+.location-choice
+{
+	display: inline-block;
+	width: 200px;
+	height: 25px;
+	margin: 0 10px;
+	font-size: 18px;
+	padding: 0
+}
+.register-info>p>input[type='radio']{
+	width:15px;
+	height:15px;
+	margin-right:10px;
+}
+.location-choice
+{
+	width: 205px;
+	height: 25px;
+}
+.register-btn{
+	display: inline-block;
+	width: 200px;
+	height: 40px;
+	background: #11BB30;
+	color: white;
+	border:1px solid #E4E4E4;
+	font-size: 23px;
+	font-weight: 600;
+	margin: 30px 300px;
+
+}
+
+
+
+
+

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/usercenter.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		       <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="left">
+		<img src="/TutorWebsite/static/images/head_pic3.jpg" alt="">
+		<p class="user-name">张思思</p>
+		<a href="javascript:void(0);" class="active-a">基本资料</a>
+		<a href="javascript:void(0);" >我的收藏</a>
+		<a href="javascript:void(0);" >我的家教招聘</a>
+		<a href="javascript:void(0);" >我的预约</a>
+	</div>
+	<div class="right">
+		<div class="user-info" >
+			<div class="title">
+				<span>>>我的基本信息</span>
+				<img src="/TutorWebsite/static/images/edit.svg" alt="点击编辑" title="编辑" id="editBasicInfo">
+			</div>
+			<div class="basic"></div>
+			<script id="showBasicInfo"  type="text/x-jsrender" >
+				<p>
+					<span>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</span>
+					<em>{{:username}}</em>
+					<input type="text" placeholder="{{:username}}" name="username">	
+				</p>
+				<p>
+					<span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+					<em>{{:password}}</em>
+					<input type="text" value="" placeholder="{{:password}}" name="psd">
+				</p>
+				<p>
+					<span>联系电话：</span>
+					<em>{{:phonenumber}}</em>
+					<input type="text" value="" placeholder="{{:phonenumber}}" name="tel">
+				</p>
+				<p>
+					<span>所属区域：</span>
+					<em>{{:region}}</em>
+					<select class="location-choice" style="margin-left: 12px;display: none;" >
+						<option value="市辖区">市辖区</option>
+						<option value="江岸区">江岸区</option>
+						<option value="江汉区">江汉区</option>
+						<option value="硚口区">硚口区</option>
+						<option value="汉阳区">汉阳区</option>
+						<option value="武昌区">武昌区</option>
+						<option value="青山区">青山区</option>
+						<option value="洪山区">洪山区</option>
+						<option value="东西湖区">东西湖区</option>
+						<option value="汉南区">汉南区</option>
+						<option value="蔡甸区">蔡甸区</option>
+						<option value="江夏区">江夏区</option>
+						<option value="黄陂区">黄陂区</option>
+						<option value="新洲区">新洲区</option>
+				</select>
+				</p>
+				<p>
+					<span>详细地址：</span>
+					<em>{{:address}}</em>
+					<input type="text" value="" placeholder="{{:address}}" name="address">
+				</p>
+				<p class="submit-btns">
+					<input type="button" value="确认修改" onclick="UserCenter.SubmitBasicInfo();" style="background:#11BB30;color:white;">
+					<input type="button" value="取消" onclick="UserCenter.cancelEdit(1)" style="">
+				</p>
+			</script>
+			<div class="detail" style="display:none;"></div>
+			<script id="showDetailInfo"  type="text/x-jsrender" >
+				<div class="title" style="margin:12px 0;">
+					<span>>>我的家教信息</span>
+					<img src="/TutorWebsite/static/images/edit.svg" alt="点击编辑" title="编辑" id="editDetailInfo">
+				</div>
+				<p>
+					<span>真实姓名：</span>
+					<em>{{:realname}}</em>
+					<input type="text" value="" placeholder="{{:realname}}" name="realname">
+				</p>
+				<p>
+					<span>联系电话：</span>
+					<em>{{:phonenumber}}</em>
+					<input type="text" value="" placeholder="{{:phonenumber}}" name="tel_info">
+				</p>
+				<p>
+					<span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+					<em>{{:sex}}</em>
+					{{if sex == "男"}}
+						<input type="radio" value="男" name="sex" checked="checked">
+						<span>男</span>
+						<input type="radio" value="女" name="sex" >
+						<span>女</span>
+					{{else}}
+						<input type="radio" value="男" name="sex" >
+						<span>男</span>
+						<input type="radio" value="女" name="sex" checked="checked">
+						<span>女</span>
+					{{/if}}
+				</p>
+				<p>
+					<span>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份：</span>
+					<em>{{:identity}}</em>
+					<select style="margin-left: 12px;display: none;" name="identity">
+						<option value="大学生家教">大学生家教</option>
+						<option value="教育机构教师">教育机构教师</option>
+						<option value="在职教师">在职教师</option>
+						<option value="专职家教">专职家教</option>
+						<option value="辅导机构">辅导机构</option>
+					</select>
+				</p>
+				<p>
+					<span>试讲时间：</span>
+					<em>{{:try_teachtime}}</em>
+					{{if try_teachtime == "半小时"}}
+						<input type="radio" name="time" checked="checked">
+						<span>半小时</span>
+						<input type="radio" name="time" >
+						<span>一小时</span>
+					{{else}}
+						<input type="radio" name="time">
+						<span>半小时</span>
+						<input type="radio" name="time" checked="checked">
+						<span>一小时</span>
+					{{/if}}
+				</p>
+				<p>
+					<span>试讲价格：</span>
+					{{if try_price == "0"}}
+						<em>免费</em>
+					{{else}}
+						<em>{{:try_price}}元/小时</em>
+					{{/if}}
+					<select style="margin-left: 12px;display: none;" name="price">
+						<option value="0">免费</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+						<option value="50">50</option>
+						<option value="60">60</option>
+						<option value="70">70</option>
+						<option value="80">80</option>
+						<option value="90">90</option>
+						<option value="100">100</option>
+						<option value="120">120</option>
+						<option value="140">140</option>
+						<option value="160">160</option>
+						<option value="180">180</option>
+						<option value="200">200</option>
+						<option value="220">220</option>
+						<option value="240">240</option>
+						<option value="260">260</option>
+						<option value="280">280</option>
+						<option value="300">300</option>
+						<option value="350">350</option>
+						<option value="400">400</option>
+						<option value="500">500</option>
+					</select>
+				</p>
+				<p>
+					<span>试讲规则：</span>
+					<em>试讲不满意全额退款</em>
+					<input type="radio" name="rule">
+					<span>试讲不满意全额退款</span>
+					<input type="radio" name="rule">
+					<span>试讲不满意也收款</span>
+				</p>
+				<p>
+					<span>授课阶段：</span>
+					<em>{{:teachtype.replace(",","，")}}</em>
+					<input type="checkbox" name="teach-type" value="1">
+					<span>一对一家教上门</span>
+					<input type="checkbox" name="teach-type" value="2">
+					<span>一对一学生上门</span>
+					<input type="checkbox" name="teach-type" value="3">
+					<span>小班辅导</span>
+				</p>
+				<p>
+					<span>家教经验：</span>
+					<em>{{:teachexperience}}</em>
+					<select style="margin-left: 12px;display: none; " name="experience">
+						<option value="1">一年及以下</option>
+						<option value="2">两年</option>
+						<option value="3">三年</option>
+						<option value="4">四年</option>
+						<option value="5">五年</option>
+						<option value="6">六年</option>
+						<option value="6">七年</option>
+						<option value="8">八年</option>
+						<option value="9">九年</option>
+						<option value="10">十年</option>
+						<option value="11">十年以上</option>
+					</select>
+				</p>
+				<table class="teach-time" border="1" cellpadding="0" cellspacing="0">
+					<thead>
+						<tr>
+							<td>授课时间</td>
+							<td>星期一</td>
+							<td>星期二</td>
+							<td>星期三</td>
+							<td>星期四</td>
+							<td>星期五</td>
+							<td>星期六</td>
+							<td>星期天</td>
+						</tr>
+					</thead>
+					<tbody>
+					{{for #data.teachtime}}
+						</tr>
+							{{if timesolt == "M"}}
+								<td>上午</td>
+							{{else timesolt == "A"}}
+								<td>下午</td>
+							{{else}}
+								<td>晚上</td>
+							{{/if}}
+							{{if Mon == "1"}}
+								<td>
+									<input type="checkbox" value="Mon-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Mon-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+							{{if Tue == "1"}}
+								<td>
+									<input type="checkbox" value="Tue-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Tue-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+							{{if Wen == "1"}}
+								<td>
+									<input type="checkbox" value="Wen-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Wen-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+							{{if Thu == "1"}}
+								<td>
+									<input type="checkbox" value="Thu-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Thu-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+							{{if Fri == "1"}}
+								<td>
+									<input type="checkbox" value="Fri-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Fri-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+							{{if Sat == "1"}}
+								<td>
+									<input type="checkbox" value="Sat-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Sat-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+							{{if Sun == "1"}}
+								<td>
+									<input type="checkbox" value="Sun-{{:timesolt}}" name="time-detail" checked="checked">
+									<span>√<span>
+								</td>
+							{{else}}
+								<td>
+									<input type="checkbox" value="Sun-{{:timesolt}}" name="time-detail">
+								</td>
+							{{/if}}
+						</tr>
+					{{/for}}
+					</tbody>
+				</table>
+				<p class="submit-btns">
+					<input type="button" value="确认修改" onclick="UserCenter.SubmitDetailInfo();" style="background:#11BB30;color:white;">
+					<input type="button" value="取消" onclick="UserCenter.cancelEdit(2)" style="">
+				</p>
+			</script>
+		</div>
+		<div class="collect-info" style="display:none;">
+			<ul class="collect-list"></ul>
+			<script id="showCollectlist"  type="text/x-jsrender" >
+				<li>
+					<a href="/TutorWebsite/pages/TutorDetail.html?userId={{:userId}}" title="点击查看家教老师详情">
+						<span>您于{{:collectTime}}收藏了家教老师{{:realname}}的信息</span>
+					</a>
+				</li>
+			</script>
+		</div>
+		<div class="recruit-info" style="display:none;">
+			<ul class="recruit-list"></ul>
+			<script id="showRecruitlist"  type="text/x-jsrender" >
+				<li>
+					<a href="/TutorWebsite/pages/RecruitDetaillInfo.html?recruitId={{:recruitId}}" title="点击查看家教招聘详情">
+						<span>您于{{:publishTime}}发布了家教招聘信息</span>
+						{{if recruitStatus == "1"}}
+							{{if applyNum > 0}}
+								<em style="color: #11BB30;">已有{{:applyNum}}人申请</em>
+							{{else}}
+								<em style="color: #F87F45;">暂无人申请</em>
+							{{/if}}
+						{{else}}
+							<em style="color: #70BDEE;">已完成</em>
+						{{/if}}
+					</a>
+				</li>
+			</script>
+		</div>
+		<div class="apply" style="display:none;">
+			<ul class="apply-list"></ul>
+			<script id="showApplylist"  type="text/x-jsrender" >
+				<li>
+					<a href="/TutorWebsite/pages/RecruitDetaillInfo.html?recruitId={{:recruitId}}" title="点击查看预约详情">
+						<span>您于{{:applyTime}}预约了{{:username}}先生发布的招聘信息</span>
+						{{if applyStatus == "1"}}
+							<em style="color: red;">待审核中</em>
+						{{else}}
+							<em style="color: #11BB30;">已完成</em>
+						{{/if}}
+					</a>
+				</li>
+			</script>
+		</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/usercenter.js"></script>
+<script type="text/javascript">
+UserCenter.initPage();
+$(function(){
+	$(".left>a").click(function(){
+		if(!$(this).hasClass("active-a")){
+			var a_index = $(this).index("a")-4;			//获取相对第一个a的索引位置
+			$(".left>a").each(function(){
+				$(this).removeClass("active-a");
+				$(".right>div").hide();
+			});
+			$(this).addClass("active-a");
+			$(".right>div").eq(a_index).show();
+			
+			if(a_index == "0"){
+				UserCenter.initPage();
+			}else{
+				if(sessionStorage["userType"] == "1"){
+					if(a_index == "1"){
+						UserCenter.GetCollectInfo();
+					}else if(a_index == "2"){
+						UserCenter.GetRecruitInfo();
+					}
+				}else{
+					UserCenter.GetApplyInfo();
+				}
+			}
+		}
+	});
+	
+	if(sessionStorage["userType"] == "1"){
+		$(".left>a").eq(3).hide();
+	}else{
+		$(".left>a").eq(1).hide();
+		$(".left>a").eq(2).hide();
+	};
+	
+});
+</script>
+</html>

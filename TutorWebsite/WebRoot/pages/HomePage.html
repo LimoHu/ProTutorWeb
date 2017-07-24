@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/home.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" class="active">首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="part1">
+		<div class="left">
+			<p>家教速查</p>
+			<div class="search-box">
+				<select id="subject-choice" class="searth-option">
+					<option value="">全部</option>
+					<option value="学前教育">学前教育</option>
+					<option value="小学">小学</option>
+					<option value="初中">初中</option>
+					<option value="高中">高中</option>
+					<option value="外语家教">外语家教</option>
+					<option value="特长家教">特长家教</option>
+				</select>
+				<select id="indentity" class="searth-option">
+					<option value="">全部</option>
+					<option value="大学生家教">大学生家教</option>
+					<option value="教育机构教师">教育机构教师</option>
+					<option value="在职教师">在职教师</option>
+					<option value="专职家教">专职家教</option>
+					<option value="辅导机构">辅导机构</option>
+				</select>
+				<select id="sex-choice" class="searth-option">
+					<option value="">全部</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+				<input type="button" class="search-btn1" value="快速搜索" onclick="HomePage.SearchFast();">
+			</div>
+			<img src="/TutorWebsite/static/images/shouye.png" >
+		</div>
+		<div class="right">
+			<div  class="login-not">
+				<div class="login">
+				<p>用户登陆</p>
+				<input type="text" placeholder="手机号" id="userName">
+				<input type="text" placeholder="密码" id="password">
+				<input type="button" name="" value="登陆" class="login-btn" onclick="HomePage.login()">
+				</div>
+				<P class="to-regsister">
+					<a href="/TutorWebsite/pages/register.html">点击这里注册</a>
+				</P>
+			</div>
+			<div class="logined" style="display: none;">
+				<p>
+					<img src="/TutorWebsite/static/images/head_man.svg" alt="头像">
+					<span>张先生</span>
+				</p>
+				<p class="current-task">进行中的家教：<em>0</em></p>
+				<p class="over-task">已完成的家教：<em>0</em></p>
+				<p class="recruitor-block"><input type="button" value="发布家教招聘" class="to-publish" id="to-publishpage"></p>
+				<p><input type="button" value="进入个人中心" id="to-centerpage"></p>
+				<p><input type="button" value="进入管理中心" id="to-centermanage"></p>
+				<p style="text-align:right;margin-top:32px;"><a href ="javascript:void(0);" id = "login_out" >退出</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="part2">	
+		<div class="left">
+			<p>家教招聘<a href="/TutorWebsite/pages/RecruitInfo.html">/&nbsp;查看更多</a></p>
+			<ul class="recruit">
+			<script id="showUrgencyRecruitInfo"  type="text/x-jsrender" >
+			{{for #data}}
+				<li>
+					<p class="recruit-person">{{:username}}急需家教</p>
+					<p class="recruit-subject">
+					{{if classType == "1"}}
+						学前教育
+					{{else classType == "2"}}
+						小学家教
+					{{else classType == "3"}}
+						初中家教
+					{{else classType == "4"}}
+						高中家教
+					{{else classType == "5"}}
+						外语家教
+					{{else classType == "6"}}
+						特长家教
+	                {{/if}}					
+					</p>
+					{{if pay == 0 }}
+					<div class="recruit-pay" style="background-color: #F87F45;">
+						<em style="margin-top:10px;font-size:20px;">面谈</em>
+					</div>
+					{{else pay < 100 }}
+					<div class="recruit-pay" style="background-color: #FFB630;">
+						<em>{{:pay}}</em>
+						<span>元/小时</span>
+					</div>
+					{{else}}
+					<div class="recruit-pay" style="background-color: #70BDEE;">
+						<em>{{:pay}}</em>
+						<span>元/小时</span>
+					</div>
+					{{/if}}
+						
+					<p class="recruit-address">
+						<img src="/TutorWebsite/static/images/location.png" alt="">
+						<span>
+						{{if location.length>8}}
+							{{:location.substring(0,8)}}...
+						{{else}}
+							{{:location}}
+						{{/if}}
+						</span>
+					</p>
+					<a href="/TutorWebsite/pages/RecruitDetaillInfo.html?recruitId={{:recruitId}}">查看详情>></a>
+				</li>
+			{{/for}}
+			</script>
+			</ul>
+		</div>
+		<div class="right">
+			<p>优质家教<a href="/TutorWebsite/pages/TutorInfo.html">/&nbsp;查看更多</a></p>
+			<ul class="tutor">
+			<script id="showTutorInfo"  type="text/x-jsrender" >
+			{{for #data}}
+				<li>
+					<div class="tutor-pic-info">
+						{{if teachexperience == 0}}
+							<img src="/TutorWebsite/static/images/head_pic9.jpg" alt="家教头像" class="tutor-pic">
+						{{else teachexperience > 0 && teachexperience < 10}}
+							<img src="/TutorWebsite/static/images/head_pic9.jpg" alt="家教头像" class="tutor-pic">
+							<img src="/TutorWebsite/static/css/number.png" alt="教龄" title="教龄" class="number-{{:teachexperience}}">
+						{{else}}
+						{{/if}}
+						
+					</div>
+					<div class="tutor-info">
+						<p>
+							<span>{{:realname}}</span>
+						</p>
+						<p><em>{{:identity}}</em>&nbsp;/&nbsp;数学</p>
+						<p style="line-height: 20px;">
+						{{if introduction.length>20}}
+							{{:introduction.substring(0,20)}}...
+						{{else}}
+							{{:introduction}}
+						{{/if}}
+						</p>
+						<a href="/TutorWebsite/pages/TutorDetail.html?userId={{:userId}}">查看详情>></a>
+					</div>
+				</li>	
+			{{/for}}
+			</script>
+			</ul>
+		</div>
+	</div>
+	<div class="part3">
+		<p>最新资讯</p>
+		<div class="part3-content">
+			<div class="left">
+				<p>家教招聘</p>
+				<ul class="update-recruit">
+				<script id="showLatestRecruitInfo"  type="text/x-jsrender" >
+				{{for #data}}
+					<li>
+						<img src="/TutorWebsite/static/images/number{{:num}}.svg" alt="">
+						<a href="/TutorWebsite/pages/RecruitDetaillInfo.html?recruitId={{:recruitId}}">.{{:username}}发布了招聘信息</a>
+						<span>{{:publishTime}}</span>
+					</li>
+				{{/for}}
+				</script>
+				</ul>
+			</div>
+			<div class="center"></div>
+			<div class="right">
+				<p>交流分享</p>
+				<ul class="update-share">
+					<li>
+						<div class="share-people">
+							<img src="/TutorWebsite/static/images/head_pic10.jpg" alt="">
+							<p>王先生</p>
+						</div>
+						<div class="share-content">
+							<div>
+								<img src="/TutorWebsite/static/images/comment.svg" alt="">(20)
+								<img src="/TutorWebsite/static/images/support.svg" alt="">(18)
+							</div>
+							<p>暑假期间，为两位同学进行了为期一个月的辅导，系统复习了英语语法。语法贯...</p>
+						</div>
+					</li>
+					<li>
+						<div class="share-people">
+							<img src="/TutorWebsite/static/images/head_pic3.jpg" alt="">
+							<p>王先生</p>
+						</div>
+						<div class="share-content">
+							<div>
+								<img src="/TutorWebsite/static/images/comment.svg" alt="">(20)
+								<img src="/TutorWebsite/static/images/support.svg" alt="">(18)
+							</div>
+							<p>暑假期间，为两位同学进行了为期一个月的辅导，系统复习了英语语法。语法贯...</p>
+						</div>
+					</li>
+					<li>
+						<div class="share-people">
+							<img src="/TutorWebsite/static/images/head_pic6.jpg" alt="">
+							<p>王先生</p>
+						</div>
+						<div class="share-content">
+							<div>
+								<img src="/TutorWebsite/static/images/comment.svg" alt="">(20)
+								<img src="/TutorWebsite/static/images/support.svg" alt="">(18)
+							</div>
+							<p>暑假期间，为两位同学进行了为期一个月的辅导，系统复习了英语语法。语法贯...</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-content"></div>
+</div>
+
+
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/homePage.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var userId = "";
+	var name = "";
+	var userType = "";
+	
+	
+	if(CheckLogined()){
+		
+		userId = sessionStorage["userId"];
+		name = sessionStorage["userName"];
+		userType = sessionStorage["userType"];
+		
+		$(".login-not").hide();
+		$(".logined>p>span").text(name);
+		$(".logined").show();
+		
+		if(userType == "2"){
+			$(".recruitor-block").hide();
+			$("#to-centermanage").hide();
+		}else if(userType == "0"){
+			$(".recruitor-block").hide();
+			$("#to-centerpage").hide();
+			$(".current-task").hide();
+			$(".over-task").hide();
+		}else{
+			$("#to-centermanage").hide();
+		}
+		
+		
+		$("#to-publishpage").click(function(){
+			window.location.href="/TutorWebsite/pages/PublishRecruitInfo.html?userId="+userId;
+		});
+		
+		$("#to-centermanage").click(function(){
+			window.location.href="/TutorWebsite/pages/ManagerCenter.html?userId="+userId;
+		});
+		
+		$("#to-centerpage").click(function(){
+			window.location.href="/TutorWebsite/pages/UserCenter.html?userId="+userId;
+		});
+		$("#login_out").click(function(){
+			sessionStorage.clear();
+			window.location.href = "/TutorWebsite/pages/HomePage.html";
+		});
+	}
+	
+	HomePage.GetUrgencyRecruitInfo();
+	HomePage.GetTutorInfo();
+	HomePage.GetRecruitInfo();
+	
+});
+</script>
+
+</html>

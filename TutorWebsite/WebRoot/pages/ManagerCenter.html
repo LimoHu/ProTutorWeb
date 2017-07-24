@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/managercenter.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="left">
+		<img src="/TutorWebsite/static/images/head_pic2.jpg" alt="">
+		<p>管理员</p>
+		<a href="javascript:void(0);" class="active-a">用户管理</a>
+		<a href="javascript:void(0);" >信息管理</a>
+		<a href="javascript:void(0);" >数据分析</a>
+	</div>
+	<div class="right">
+		<div class="user-manage" >
+			<div class="title">
+				<img src="/TutorWebsite/static/images/user_manege.svg" alt="">
+				<span>用户管理</span>
+				<div class="search-block">
+					<input type="text" placeholder="请输入用户名..." id="name" class="search-text">
+					<input type="button" value="搜索" class="search-btn">
+				</div>
+			</div>
+			<table class="user-list" border="1" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<td>用户ID</td>
+						<td>用户名</td>
+						<td>密码</td>
+						<td>联系方式</td>
+						<td>所属辖区</td>
+						<td>地址</td>
+						<td>用户类型</td>
+						<td>注册时间</td>
+						<td>状态</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+				<script id="userList"  type="text/x-jsrender" >
+				{{for #data}}
+					<tr>
+						<td>{{:userId}}</td>
+						<td>{{:userName}}</td>
+						<td>{{:password}}</td>
+						<td>{{:phonenumber}}</td>
+						<td>{{:region}}</td>
+						<td>{{:address}}</td>
+						<td>
+						{{if usertype == "1"}}
+							家长
+						{{else}}
+							家教
+						{{/if}}
+						</td>
+						<td>{{:registerTime}}</td>
+						<td>
+						{{if status == 1}}
+							<span style="color:#11BB30">正常</span>
+						{{else}}
+							<span style="color:#ccc">已禁用</span>
+						{{/if}}
+						</td>
+						<td>
+							<a href="javascript:ManageCenter.deleteUser({{:userId}});">
+								<img src="/TutorWebsite/static/images/delete.svg" alt="删除" title="删除" class="delate-btn">
+							</a>
+							{{if status == 1}}
+							<a href="javascript:ManageCenter.disableUser({{:userId}},0);">
+								<img src="/TutorWebsite/static/images/disable.svg" alt="禁用" title="禁用" class="disable-btn">
+							</a>
+							{{else}}
+							<a href="javascript:ManageCenter.disableUser({{:userId}},1);">
+								<img src="/TutorWebsite/static/images/undisable.svg" alt="解禁" title="解禁" class="disable-btn">
+							</a>
+							{{/if}}
+						</td>
+					</tr>
+				{{/for}}
+				</script>
+			</table>
+			<div class="page-btn">
+				<ul class="user-pages">
+					<li><input type="button" value="1" class="active-page"   ></li>
+					<li><input type="button" value="2"></li>
+					<li><input type="button" value="3"></li>
+					<li><input type="button" value="4"></li>
+					<li><input type="button" value="5"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="info-manage" style="display: none;">
+			<div class="title">
+				<img src="/TutorWebsite/static/images/info-manege.svg" alt="">
+				<span>招聘信息管理</span>
+				<div class="search-block">
+					<input type="text" placeholder="请输入发布招聘者的..." id="name" class="search-text">
+					<input type="button" value="搜索" class="search-btn">
+				</div>
+			</div>
+			<table class="info-list" border="1" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<td>发布人ID</td>
+						<td>发布人</td>
+						<td>性别要求</td>
+						<td>家教要求</td>
+						<td>支付</td>
+						<td>招聘人数</td>
+						<td>学员类型</td>
+						<td>发布时间</td>
+						<td>任务状态</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+				<script id="infoList"  type="text/x-jsrender" >
+				{{for #data}}
+					<tr>
+						<td>{{:userId}}</td>
+						<td>{{:username}}</td>
+						<td>{{:tutorSex}}</td>
+						<td>{{:turtorType}}</td>
+						<td>{{:pay}}元/天</td>
+						<td>{{:recruitNumber}}</td>
+						<td>{{:classType}}</td>
+						<td>{{:publishTime}}</td>
+						<td>
+						{{if recruitStatus == "2"}}
+							已完成
+						{{else}}
+							招聘中
+						{{/if}}
+						</td>
+						<td>
+							<a href="javascript:ManageCenter.deleteRecruitInfo({{:recruitId}});">
+								<img src="/TutorWebsite/static/images/delete.svg" alt="删除" title="删除"  class="delate-btn">
+							</a>
+						</td>
+					</tr>
+				{{/for}}
+				</script>
+			</table>
+			<div class="page-btn">
+				<ul class="info-pages">
+					<li><input type="button" value="1" class="active-page"></li>
+					<li><input type="button" value="2"></li>
+					<li><input type="button" value="3"></li>
+					<li><input type="button" value="4"></li>
+					<li><input type="button" value="5"></li>
+				</ul>
+			</div>	
+		</div>
+		<div class="data-analysis" style="display: none;">
+			<div class="title">
+				<img src="/TutorWebsite/static/images/data_analyse.svg" alt="">
+				<span>数据分析</span>
+				<!-- <div class="search-block">
+					<input type="text" placeholder="请输入用户名..." id="name" class="search-text">
+					<input type="button" value="搜索" class="search-btn">
+				</div> -->
+			</div>
+			<div class="line-chart" id="line">
+				<!-- <img src="/TutorWebsite/static/images/timg.jpg" alt=""> -->
+			</div>
+			<div class="pie-chart" id="pie">
+				<!-- <img src="/TutorWebsite/static/images/timg1.jpg" alt=""> -->
+			</div>
+			<div class="bar-graph" id="bar">
+				<!-- <img src="/TutorWebsite/static/images/timg2.jpg" alt=""> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="footer">
+	<div class="footer-content"></div>
+</div> -->
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/echarts.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/managecenter.js"></script>
+<script type="text/javascript">
+$(function(){
+	ManageCenter.userList();
+	$(".left>a").click(function(){
+		if(!$(this).hasClass("active-a")){
+			var a_index = $(this).index("a")-4;			//获取相对第一个a的索引位置
+			$(".left>a").each(function(){
+				$(this).removeClass("active-a");
+				$(".right>div").hide();
+			});
+			$(this).addClass("active-a");
+			$(".right>div").eq(a_index).show();
+			
+			if(a_index == "0"){
+				ManageCenter.userList();
+			}else if(a_index == "1"){
+				ManageCenter.infoList();
+			}else{
+				//ManageCenter.dataAnalyse();
+				ManageCenter.drowLine();
+				ManageCenter.drowPie();
+				//ManageCenter.drowBar();
+			}
+		}
+	})
+});
+</script>
+</html>

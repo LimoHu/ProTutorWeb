@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<head >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/tutorinfo.css">
+</head>
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" class="active">教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="part1">
+		<div class="subject">
+			<span>(阶段)</span>
+			<ul class="subject-choice">
+				<li><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);" class="active-choice">不限</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">学前教育</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">小学家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">初中家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">高中家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">外语家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">特长家教</a></li>
+			</ul>
+		</div>
+		<div class="indentity">
+			<span>(身份)</span>
+			<ul class="indentity-choice">
+				<li><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);" class="active-choice">不限</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">大学生家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">教育机构教师</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">在职教师</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">专职家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">辅导机构</a></li>
+			</ul>
+		</div>
+		<div class="sex">
+			<span>(性别)</span>
+			<ul class="sex-choice">
+				<li><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);" class="active-choice">不限</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">男</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="TutorInfo.searchTutor(this);">女</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="part2">
+		<ul class="tutor-list"></ul>
+		<script id="showTutorInfo"  type="text/x-jsrender" >
+		{{for #data}}
+			<li>
+				<div class="tutor-pic">
+					<img src="/TutorWebsite/static/images/head_pic9.jpg" alt="家教头像">
+				</div>
+				<div class="tutor-info">
+					<p class="tutor-name">
+						{{:realname}} 
+						<span>{{:identity}}</span>
+					</p>
+					<p class="tutor-money">
+						<span>家教经验：
+							<em class="important-info">{{:teachexperience}}年</em></span>
+						<span style="margin-left: 60px;">
+							性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+							<em class="important-info">{{:sex}}</em>
+						</span >
+						<span style="margin-left: 60px;">
+							辅导阶段：
+							<em class="important-info">{{:teachtype.replace(",","，")}}</em>
+						</span>
+					</p>
+					<p class="tutor-location">
+						<span>试讲费用：
+							<em class="important-info">
+							{{if try_price == "0"}}
+								免费
+							{{else}}
+								{{：try_price}}元/小时起
+							{{/if}}
+							</em> 
+						</span>
+						<span style="margin-left: 54px;">
+							试讲规则：
+							<em class="important-info">
+							{{if try_rule == "1"}} 
+								试讲不满意全额退款
+							{{else}}	
+								试讲不满意也收款
+							{{/if}}
+							</em>
+						</span>
+					</p>
+					<p class="tutor-intro">
+						个人说明：
+						<em class="important-info">{{:introduction}}</em>
+					</p>
+					<p class="tutor-number">
+						通过本站进行的家教次数：
+						<img src="/TutorWebsite/static/images/star.svg" alt="通过本站进行的家教次数" title="">
+						<span style="margin-right: 20px;">3</span>
+						好评：
+						<img src="/TutorWebsite/static/images/support.svg" alt="好评" title="">
+						<span>2</span>
+					</p>
+					<a href="/TutorWebsite/pages/TutorDetail.html?userId={{:userId}}" class="to-details">查看详情>></a>
+				</div>
+				<div class="divide-line"></div>
+			</li>
+		{{/for}}
+		</script>
+	</div>
+	<div class="part3">
+		<ul class="tutor-pages">
+			<li><input type="button" value="1" class="active-page"></li>
+			<li><input type="button" value="2"></li>
+			<li><input type="button" value="3"></li>
+			<li><input type="button" value="4"></li>
+			<li><input type="button" value="5"></li>
+		</ul>
+		<input type="button" value="下一页 》" id="next-page">		
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-content"></div>
+</div>
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/tutorInfo.js"></script>
+<script type="text/javascript">
+$(function(){
+	if(window.location.search.indexOf("?") != "-1"){
+		var str = window.location.search;
+		var subject = "";
+		var indentity = "";
+		var sex = "";
+		if(str.indexOf("subject") != "-1"){
+			subject = GetQueryString("subject");
+			$(".subject-choice>li>a").each(function(){
+				$(this).removeClass("active-choice");
+				if($(this).text() == subject){
+					$(this).addClass("active-choice");
+				}
+			});
+		}
+		if(str.indexOf("indentity") != "-1"){
+			indentity = GetQueryString("indentity");
+			$(".indentity-choice>li>a").each(function(){
+				$(this).removeClass("active-choice");
+				if($(this).text() == indentity){
+					$(this).addClass("active-choice");
+				}
+			});
+		}
+		if(str.indexOf("sex") != "-1"){
+			sex = GetQueryString("sex"); 
+			$(".sex-choice>li>a").each(function(){
+				$(this).removeClass("active-choice");
+				if($(this).text() == sex){
+					$(this).addClass("active-choice");
+				}
+			});
+		}
+		TutorInfo.searchTutor();
+	}else{
+		TutorInfo.initPage();
+	}
+});
+</script>
+</html>

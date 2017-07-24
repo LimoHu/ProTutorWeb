@@ -1,0 +1,158 @@
+html{
+    width:100%;
+    height:100%;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    background: #fff;
+    color:#74777b;
+    font-weight:500;
+    font-size: 1.2em;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei UI","Microsoft YaHei",SimHei,"宋体",simsun,sans-serif;
+}
+div,span,a,ul,li{
+	padding:0;
+	margin:0;
+}
+em{
+	font-style:normal;
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color:#74777b;
+}
+/* 导航 */
+.header{
+	width:100%;
+	height:150px;
+}
+.logo{
+	width:100%;
+	position: relative;
+	height:80px;
+}
+.logo>img{
+	width:200px;
+	height: 60px;
+	margin: 20px 0 0 200px;
+}
+.nav{
+	width:100%;
+    height: 50px;
+    position: relative;
+    margin-top: 10px;
+}
+.nav-content{
+	width:800px;
+    height: 30px;
+    margin: 5px 200px;
+    position: absolute;
+}
+.nav-content>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-content a{
+    text-decoration: none;
+	color: #555;
+}
+.nav-content li{
+    display: inline-block;
+    margin:0 20px;
+    width:100px;
+    text-align: center;
+}
+.nav-search{
+	position: absolute;
+	width: 250px;
+	height: 30px;
+	right: 230px;
+	bottom: 15px;
+	border: 1px solid #E4E4E4;
+	border-radius: 15px;
+}
+#search-type{
+	display: inline-block;
+	width:50px;
+	height:25px;
+	border:0;
+	margin: 4px 0 0 15px;
+	vertical-align: top;
+}
+#search-content{
+	display: inline-block;
+	width:140px;
+	height:25px;
+	border:0;
+	margin: 2px 0 0 0;
+	vertical-align: top;
+}
+#search-btn{
+	display: inline-block;
+	border: 0;
+	background: #00CC00;
+	border-radius: 50%;
+	width:26px;
+	height: 26px;
+	color: white;
+	cursor: pointer;
+	margin: 0 -5px;
+
+}
+.nav-block{
+	width:950px;
+    height: 3px;
+    margin: 0 200px;
+    position: absolute;
+    bottom: 5px;
+    background: #F2F2F2;
+}
+.slide-block{
+	width:140px;
+    height: 3px;
+    background: #00CC00;
+}
+.active:after{
+	content: "";
+	display: block;
+    position: absolute;  
+    width:140px;
+    height: 3px;
+    background: #00CC00;
+    bottom: -10px;
+    z-index: 999;
+    margin-left:-20px;
+}
+.footer{
+	width: 100%;
+}
+.footer-content{
+	margin:20px 200px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	height: 20px;
+	width:950px;
+}
+.add{
+	position: fixed;
+	bottom: 10px;
+	right: 30px;
+}
+.add>img{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	box-shadow: 5px 5px 3px #888888;
+}

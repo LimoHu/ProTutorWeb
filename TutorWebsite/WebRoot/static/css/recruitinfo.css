@@ -1,0 +1,250 @@
+.content{
+	width: 100%;
+}
+.part1{
+	width :950px;
+	height: 95px;
+	position: relative;
+	margin: 0 200px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	font-size: 15px;
+}
+.subject,.location{
+	margin:20px 20px;
+}
+.subject-choice,
+.location-choice
+{
+	display: inline-block;
+	margin-left: 15px;
+}
+.subject-choice>li,
+.location-choice>li
+
+{
+	display: inline-block;
+	margin-right: 0;
+}
+.subject-choice>li>span,
+.location-choice>li>span
+{
+	margin-right: 5px;
+	color:#E4E4E4;
+}
+.active-choice{
+	color:#11BB30;
+}
+.part2{
+	width :950px;
+	position: relative;
+	margin: 10px 204px;
+	font-size: 12px;
+}
+
+.recruit-list>li{
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	width:227.4px;
+	height: 340px;	
+	background: #F7F7F7;
+	border:1px solid #E4E4E4;
+	margin-right: 7px;
+	margin-top: 6px;
+	box-sizing: border-box;
+	background:#F7F7F7;
+}
+/* 中间列表部分 */
+.recruit-list>li>p{
+	margin-left: 40px;
+	
+}
+
+.recruit-list>li>p>em{
+	color:black;
+}
+.recruit-pic{
+	height:20px;
+	width:20px;
+	vertical-align:bottom;
+}
+
+.recruit-person{
+	font-size: 14px;
+	color:#11BB30;
+	vertical-align:bottom;
+}
+.recruit-subject{	
+	display: inline-block;
+	background-color: #33CC00;
+	color:white;
+	border-radius: 5px;
+	padding: 1px 5px;
+	margin-left: 30px;
+	font-weight: 500;
+}
+.recruit-pay{
+	display: inline-block;
+	width:80px;
+	height: 80px;
+	text-align: center;
+	position: relative;
+	border-radius: 50%;
+	color: white;
+	box-sizing: border-box;
+	padding: 10px;
+	position: relative;
+	left: 50%;
+	margin-left: -40px;
+	margin-top: 15px;
+}
+.recruit-pay>em{
+	display: block;
+	font-size: 30px;
+}
+.recruit-pay>span{
+	display: block;
+	font-size: 15px;
+}
+.recruit-list>li>p.to-other{
+	
+	width:100%;
+	height:30px;
+	line-height:30px;
+	margin-left:0;
+	margin-top:20px;
+	text-align:center;
+	
+}
+.recruit-list>li>p.recruit-over{
+	
+	width:100%;
+	height:30px;
+	line-height:30px;
+	margin-left:0;
+	margin-top:20px;
+	text-align:center;
+	background:#ccc;
+	letter-spacing:3px;
+	font-size:15px;
+	
+}
+.recruit-list>li>p>a{
+	font-size:15px;
+	letter-spacing:2px;
+	display:inline-block;
+	width:48%;
+	border:1px solid #E4E4E4;
+}
+.part3{
+	width :950px;
+	height: 50px;
+	position: relative;
+	margin-top: 30px;
+	margin-left: 150px;
+	font-size: 15px;
+	text-align: center;
+}
+.recurit-pages{
+	display: inline-block;
+	vertical-align: top;
+}
+.recurit-pages>li{
+	display: inline-block;
+	vertical-align: top;
+}
+.recurit-pages>li>input{
+	width:40px;
+	height: 25px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	color:#74777b;
+	margin-left:10px;
+}
+#next-page{
+	width:40px;
+	height: 25px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	color:#74777b;
+	width:70px;
+	margin-left: 10px;
+	display: inline-block;
+	vertical-align: top;
+}
+.recurit-pages>li>input.active-page{
+	color:#11BB30;
+	font-weight: 800;
+}
+.over{
+	width: 100%;  
+    height: 190%;  
+    opacity:0.8;/*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*/  
+    filter:alpha(opacity=80);  
+    display: none;  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    z-index:1;  
+    background: silver;  
+}
+.over-content{
+	display: none;  
+	width: 320px;
+	height: 190px;
+	border:1px solid #E4E4E4;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 12px;
+	position: absolute;
+	left:50%;
+	margin-left: -150px;
+	top:200px;
+	z-index:2;
+	background: white;
+	border-radius: 3px;
+}
+.over-content>p.over-title{
+	font-size: 15px;
+	color: #11BB30;
+}
+.over-content>p.over-title>span{
+	font-size:5px;
+}
+.over-content>p.employee-tel{
+	letter-spacing: 2px;
+	font-size: 20px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border:1px solid #E4E4E4;
+	box-sizing: border-box;
+	padding: 3px;
+	text-align: center;
+	border-radius: 2px;
+}
+.over-btn{
+	width: 205px;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	right: 10px;
+	margin-top: 0;
+}
+.over-content>p>input{
+	width: 100px;
+	height: 30px;
+	letter-spacing: 2px;
+	font-size: 13px;
+	border:1px solid #E4E4E4;
+	border-radius: 3px;
+}
+#submit{
+	background: #11BB30;
+	color: white;
+}
+#cencel{
+	background: #F7F7F7;
+}
+

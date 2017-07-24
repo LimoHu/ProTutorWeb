@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css ">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/recruitinfo.css">
+	
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		    	<li>
+		            <a href="/TutorWebsite/pages/HomePage.html">首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" class="active">招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="part1">
+		<div class="subject">
+			<span>(阶段)</span>
+			<ul class="subject-choice">
+				<li><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);" class="active-choice">不限</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">学前教育</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">小学家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">初中家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">高中家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">外语家教</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">特长家教</a></li>
+			</ul>
+		</div>
+		<div class="location">
+			<span>(区域)</span>
+			<ul class="location-choice">
+				<li><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);" class="active-choice">不限</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">市辖区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">江岸区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">江汉区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">硚口区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">汉阳区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">武昌区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">青山区</a></li> 
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">洪山区</a></li> 
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">东西湖</a></li> 
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">汉南区</a></li> 
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">蔡甸区</a></li> 
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">江夏区</a></li> 
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">黄陂区</a></li>
+				<li><span>|</span><a href="javascript:void(0);" onclick="RecruitInfo.searchRecruit(this);">新洲区</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="part2">
+		<ul class="recruit-list"></ul>
+		<script id="showRecruitInfo"  type="text/x-jsrender" >
+		{{for #data}}
+   			<li>
+				{{if pay == 0}}
+				<div class="recruit-pay" style="background-color: #F87F45;">
+					<em style="margin-top:10px;font-size:25px;">面谈</em>
+				</div>
+				{{else  pay>0 && pay<100}}
+				<div class="recruit-pay" style="background-color: #FFB630;;">
+					<em>{{:pay}}</em>
+					<span>元/小时</span>
+				</div>
+				{{else }}
+				<div class="recruit-pay" style="background-color: #70BDEE;">
+					<em>{{:pay}}</em>
+					<span>元/小时</span>
+				</div>
+				{{/if}}
+				<p>
+					<img src="/TutorWebsite/static/images/head_man.svg" alt="头像" class="recruit-pic">
+					<em class="recruit-person">{{:username}}</em>
+					<span class="recruit-subject">
+					{{if classType == "1"}}
+						学前教育
+					{{else classType == "2"}}
+						小学家教
+					{{else classType == "3"}}
+						初中家教
+					{{else classType == "4"}}
+						高中家教
+					{{else classType == "5"}}
+						外语家教
+					{{else classType == "6"}}
+						特长家教
+	                {{/if}}					
+					</span>
+				</p>
+				<p>身份要求：
+				{{if turtorType.length>9}}
+					<em>{{:turtorType.substring(0,9)}}...</em>
+				{{else}}
+					<em>{{:turtorType}}</em>
+				{{/if}}
+				</p>
+				<p>所在地区：<em>{{:region}}</em></p>
+				<p>住址：<em>{{:location}}</em></p>
+				<p>性别要求：<em>{{:tutorSex}}</em></p>
+				<p>授课次数：<em>1次/每周</em></p>
+				<p>具体要求：
+				{{if detail.length>9}}
+					<em>{{:detail.substring(0,9)}}...</em>
+				{{else}}
+					<em>{{:detail}}</em>
+				{{/if}}
+				</p>
+				{{if recruitStatus == "1"}}
+				<p class="to-other" >
+					<a href="/TutorWebsite/pages/RecruitDetaillInfo.html?recruitId={{:recruitId}}" style="background:#11BB30;color:white">查看详情</a>
+					<a href="javascript:RecruitInfo.showOverlay({{:recruitId}})" style="background:#fff;" id="recruit-btn">马上预约</a>
+				</p>
+				{{else}}
+				<p class="recruit-over">已完成</p>
+				{{/if}}
+			</li>
+		{{/for}}
+		</script>
+	</div>
+	<div class="part3">
+		<ul class="recurit-pages">
+			<li><input type="button" value="1" class="active-page"></li>
+			<li><input type="button" value="2"></li>
+			<li><input type="button" value="3"></li>
+			<li><input type="button" value="4"></li>
+			<li><input type="button" value="5"></li>
+		</ul>
+		<!-- <input type="button" value="下一页 》" id="next-page">	 -->	
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-content"></div>
+</div>
+<div class="over"></div>
+<div class="over-content" >
+	<p class="over-title"><p class="over-title">已帮您在线预约！<span>(请拨打以下电话尽快联系家长~)</span></p>
+	<p class="employee-tel">156-2911-9395</p>
+	<p class="over-btn">
+		<input type="button" value="私下联系" id="submit" onclick="RecruitInfo.submitApply();">
+		<input type="button" value="取消预约" id="cencel" onclick="RecruitInfo.closeOverLay();" >
+		<input type="hidden" id="recruitId_submit" value="">
+	</p>
+</div>
+
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/recruitInfo.js"></script>
+<script type="text/javascript">
+$(function(){
+	RecruitInfo.initPage();
+});
+</script>
+</html>

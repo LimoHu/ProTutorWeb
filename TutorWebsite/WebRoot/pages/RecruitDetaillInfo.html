@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/recruitdetailinfo.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="part1">
+		<div class="title">
+			<img src="/TutorWebsite/static/images/hire.svg" alt="">
+			<span>家教招聘详情</span>
+		</div>
+		<div class = "recruit-detail-info"></div>
+		<script id="recruitDetailInfo"  type="text/x-jsrender" >
+			<div class="left-detail">
+				<div class="recruit-detail">
+					<p class="info-title">基本要求</p>
+					<p>
+						<div class="info-left">家教性别：<em>{{:tutorSex}}</em></div>
+						<div class="info-right">家教来源：<em>{{:turtorType}}</em></div>
+					</p>
+					<p>
+						<div class="info-left">学生类型：<em>{{:classType}}</em></div>
+						<div class="info-right">课时费：<em>{{:pay}}元/小时</em></div>
+					</p>
+					<p>
+						<div class="info-left">招聘人数：<em>{{:recruitNumber}}</em></div>
+						<div class="info-right">授课位置：<em>{{:location}}</em></div>
+					</p>
+					<p>
+						具体要求：<em>{{:detail}}</em>
+					</p>
+				</div>
+				<div class="student-info">
+					<p class="info-title">学员情况</p>
+					<p>
+						<div class="info-left">所在学校：
+						{{if school == "" || school == null}}
+							<em>未填写</em>
+						{{else}}
+							<em>{{:school}}</em>
+						{{/if}}
+						</div>
+						<div class="info-right">所在年级：
+						{{if grade == "" || grade == null}}
+							<em>未填写</em>
+						{{else}}
+							<em>{{:grade}}</em>
+						{{/if}}
+						</div>
+					</p>
+					<p>
+						<div class="info-left">当前成绩：
+						{{if mark == "" || mark == null}}
+							<em>未填写</em>
+						{{else mark == "A"}}
+							<em>90-100分</em>
+						{{else mark == "B"}}
+							<em>80-90分</em>
+						{{else mark == "C"}}
+							<em>70-80分</em>
+						{{else mark == "D"}}
+							<em>70-80分</em>
+						{{else mark == "E"}}
+							<em>60分以下</em>
+						{{/if}}
+						</div>
+						<div class="info-right">学生特点：
+						{{if feature == "" || feature == null}}
+							<em>未填写</em>
+						{{else}}
+							<em>{{:feature}}</em>
+						{{/if}}
+					</p>
+				</div>
+			</div>
+			<p><input type="button" value="点击应聘" class="sub-btn"></p>
+		</div>
+		<div class="right-employee">
+			<img src="/TutorWebsite/static/images/head_pic1.jpg" alt="用户头像">
+			<p>{{:username}}</p>
+		</div>
+	</script>
+	<table class="apply-list" >
+		<thead>
+			<tr><th colspan="6">已在线预约此招聘信息的家教</th></tr>
+			<tr>
+				<th>家教老师姓名</th>
+				<th>性别</th>
+				<th>所属机构</th>
+				<th>试讲价格</th>
+				<th>家教经验</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody class="apply-info-list"></tbody>
+		<script id="applyInfolist"  type="text/x-jsrender" >
+		{{for #data}}
+			<tr>
+				<td>{{:realname}}</td>
+				<td>{{:sex}}</td>
+				<td>{{:identity}}</td>
+				{{if try_price == "0"}}
+					<td>免费</td>
+				{{else}}
+					<td>{{:try_price}}元</td>
+				{{/if}}
+				<td>{{:teachexperience}}年</td>
+				<td>
+				{{if applyStatus == "1"}}
+					<input type="button" value="选定" class="choose-btn" onclick="RecruitDetailInfo.chooseApplicant({{:applyId}})">
+					<input type="button" value="删除" class="delete-btn">
+				{{else}}
+					<span style="color:#11BB30;font-size:12px;">已选定</span>
+				{{/if}}
+				</td>
+			</tr>
+		{{/for}}
+		</script>
+	</table>
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-content"></div>
+</div>
+<div class="over"></div>
+<div class="over-content" >
+	<p class="over-title">已帮您在线预约！<span>(请拨打以下电话尽快联系家长~)</span></p>
+	<p class="employee-tel">156-2911-9395</p>
+	<p class="over-btn">
+		<input type="button" value="私下联系" id="submit" onclick="RecruitDetailInfo.submitApply();">
+		<input type="button" value="取消预约" id="cencel" >
+	</p>
+</div>
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/recruitdetailinfo.js"></script>
+<script type="text/javascript">
+	RecruitDetailInfo.initPage();
+</script>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.RecruitInfoMapper" >
+   	<resultMap id="BaseResultMap" type="com.ssm.entity.RecruitInfo" >
+    	<id column="recruitId" property="recruitId" jdbcType="INTEGER" />
+    	<result column="tutorSex" property="tutorSex" jdbcType="VARCHAR" />
+    	<result column="turtorType" property="turtorType" jdbcType="VARCHAR" />
+    	<result column="pay" property="pay" jdbcType="INTEGER" />
+    	<result column="recruitNumber" property="recruitNumber" jdbcType="INTEGER" />
+    	<result column="location" property="location" jdbcType="VARCHAR" />
+    	<result column="classType" property="classType" jdbcType="VARCHAR" />
+    	<result column="detail" property="detail" jdbcType="VARCHAR" />
+    	<result column="userId" property="recruitId" jdbcType="INTEGER" />
+    	<result column="num" property="num" jdbcType="INTEGER" />
+    	<result column="publishTime" property="publishTime" jdbcType="TIMESTAMP" />
+    	<result column="recruitStatus" property="recruitStatus" jdbcType="VARCHAR" />
+    	<result column="school" property="school" jdbcType="VARCHAR" />
+    	<result column="grade" property="grade" jdbcType="VARCHAR" />
+    	<result column="mark" property="mark" jdbcType="VARCHAR" />
+    	<result column="feature" property="feature" jdbcType="VARCHAR" />
+    	<result column="region" property="region" jdbcType="VARCHAR" />
+    	<result column="total" property="total" jdbcType="INTEGER" />
+ 	</resultMap>
+  	<insert id="InsertRecruitInfo" parameterType="com.ssm.entity.RecruitInfo" >
+	    insert into recruitInfo 
+	    (tutorSex, turtorType, pay, recruitNumber, location, classType, detail,userId,
+	     school,grade,mark,feature)
+	    values (
+	    #{tutorSex,jdbcType=VARCHAR}, #{turtorType,jdbcType=VARCHAR}, #{pay,jdbcType=INTEGER}, 
+	    #{recruitNumber,jdbcType=INTEGER},#{location,jdbcType=VARCHAR}, #{classType,jdbcType=VARCHAR},
+	    #{detail,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},#{school,jdbcType=VARCHAR},
+	    #{grade,jdbcType=VARCHAR},#{mark,jdbcType=VARCHAR},#{feature,jdbcType=VARCHAR}
+	    )
+  	</insert>
+  	<select id="SelectRecruitInfoList"  resultType="java.util.HashMap" parameterType="com.ssm.entity.PageData">
+	  	select user.username,recruitinfo.recruitId,user.region,
+	  	recruitinfo.tutorSex,recruitinfo.turtorType,
+	  	recruitinfo.pay,recruitinfo.recruitNumber,
+	  	recruitinfo.location,recruitinfo.classType,
+	  	recruitinfo.detail,recruitinfo.recruitStatus,
+	  	recruitinfo.school,recruitinfo.grade,
+	  	recruitinfo.mark,recruitinfo.feature
+	  	from user,recruitinfo
+	  	where user.userId = recruitinfo.userId order  by recruitinfo.recruitId desc 
+	  	limit #{startIndex},#{pageSize}
+  	</select>
+  	<!-- 获取家教招聘信息表最新的三条信息 -->
+  	<select id="SelectThreeRecruitInfo"  resultType="java.util.HashMap">
+	  	select user.username,recruitinfo.recruitId,
+	  	recruitinfo.classType,recruitinfo.pay,
+	  	recruitinfo.location
+	  	from user,recruitinfo
+	  	where user.userId = recruitinfo.userId order  by recruitinfo.recruitId desc limit 0,3
+  	</select>
+	<!-- 获取家教招聘信息表最新的十条信息 -->
+	<select id="SelectTenRecruitInfo"  resultType="java.util.HashMap">
+	  	select recruitinfo.recruitId,
+		@rownum:=@rownum+1 as num,
+		user.username,
+		DATE_FORMAT(recruitinfo.publishTime,'%Y-%m-%d %H:%i:%s') as publishTime
+		from user, recruitinfo,(select @rownum:=0) temp
+		where user.userId = recruitinfo.userId order  by recruitinfo.recruitId desc limit 0,10
+	</select>
+	<!-- 获取单条家教招聘信息 -->
+	<select id="SelectSingleRecruitInfo"  resultType="java.util.HashMap" >
+	  	select user.username,recruitinfo.recruitId,
+	  	recruitinfo.tutorSex,recruitinfo.turtorType,
+	  	recruitinfo.pay,recruitinfo.recruitNumber,
+	  	recruitinfo.location,recruitinfo.classType,
+	  	recruitinfo.detail,recruitinfo.userId,
+	  	recruitinfo.school,recruitinfo.grade,
+	  	recruitinfo.mark,recruitinfo.feature
+	  	from user,recruitinfo
+	  	where user.userId = recruitinfo.userId
+	  	and recruitinfo.recruitId = #{recruitId}
+	</select>
+	<select id="getTotalNumber" resultType="int">
+	  	select count(*) as totalNum from recruitinfo
+	</select>
+	<select id="SelectInfoList"  resultType="java.util.HashMap" parameterType="com.ssm.entity.PageData">
+	  	select user.username,user.region,
+	  	recruitinfo.recruitId,
+	  	recruitinfo.userId,
+	  	recruitinfo.tutorSex,recruitinfo.turtorType,
+	  	recruitinfo.pay,recruitinfo.recruitNumber,
+	  	recruitinfo.classType,
+	  	recruitinfo.recruitStatus,
+	  	DATE_FORMAT(recruitinfo.publishTime,'%Y-%m-%d %H:%i:%s') as publishTime
+	  	from user,recruitinfo
+	  	where user.userId = recruitinfo.userId order  by recruitinfo.recruitId desc 
+	  	limit #{startIndex},#{pageSize}
+  	</select>
+  	<delete id="deleteRecruitInfo" parameterType="int">
+  		delete from recruitinfo where recruitId = #{recruitId}
+  	</delete>
+  	<select id="selectClassTypeAnalyse"  resultType="java.util.HashMap" >
+  	  select classType, count(*) as total from recruitinfo group by classType
+  	</select>
+  	<select id="selectMarkAnalyse"  resultType="java.util.HashMap">
+  	  select mark, count(*) as total from recruitinfo group by mark
+  	</select>
+  	<select id="queryRecruitInfoList"  resultType="java.util.HashMap" parameterType="com.ssm.entity.RecruitQuery">
+	  	select user.username,recruitinfo.recruitId,user.region,
+	  	recruitinfo.tutorSex,recruitinfo.turtorType,
+	  	recruitinfo.pay,recruitinfo.recruitNumber,
+	  	recruitinfo.location,recruitinfo.classType,
+	  	recruitinfo.detail,recruitinfo.recruitStatus,
+	  	recruitinfo.school,recruitinfo.grade,
+	  	recruitinfo.mark,recruitinfo.feature
+	  	from user,recruitinfo
+	  	where 1=1 
+	  	<if test="null!=classType and ''!=classType" >
+	  	 and recruitinfo.classType = #{classType}	
+	  	</if>
+	  	<if test="null!=region and ''!=region" >
+	  	 and user.region = #{region}	
+	  	</if>
+	  	and user.userId = recruitinfo.userId order  by recruitinfo.recruitId desc 
+	  	limit #{startIndex},#{pageSize}
+  	</select>
+  	<select id="queryRecruitNumber" resultType="int" parameterType="com.ssm.entity.RecruitQuery">
+	  	select count(*) as totalNum from recruitinfo,user 
+	  	where user.userId = recruitinfo.userId
+	  	<if test="null!=classType and ''!=classType" >
+	  	 and recruitinfo.classType = #{classType}	
+	  	</if>
+	  	<if test="null!=region and ''!=region" >
+	  	 and user.region = #{region}	
+	  	</if>
+  </select>
+  <select id="selectRecruiSample" parameterType="int" resultType="java.util.HashMap">
+  	select
+  	DATE_FORMAT(recruitinfo.publishTime,'%Y-%m-%d %H:%i:%s') as publishTime,
+  	recruitinfo.recruitStatus,recruitinfo.recruitId,
+	(SELECT count(*) from applyinfo WHERE applyinfo.recruitId = recruitinfo.recruitId) as applyNum
+	from recruitinfo  where recruitinfo.userId = #{userId} ORDER BY recruitinfo.recruitId
+  </select>
+</mapper>

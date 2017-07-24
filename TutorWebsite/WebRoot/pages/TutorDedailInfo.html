@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/tutordetailinfo.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="part1">
+		<div class="top-title">
+			<img src="/TutorWebsite/static/images/tutor_pic.svg" alt="">
+			<span>家教信息补充</span>
+			<div class="divide-line"></div>
+		</div>
+		<div class="center-content">
+			<p>
+				<span>真实姓名：</span>
+				<input type="text" name="real-name">
+			</p>
+			<p>
+				<span>联系电话：</span>
+				<input type="text" name="phone-number">
+			</p>
+			<p>
+				<span>您的性别：</span>
+				<input type="radio" name="sex" value="男">男
+				<input type="radio" name="sex" value="女">女
+			</p>
+			<p>
+				<span>您的身份：</span>
+				<select id="identity-choice">
+					<option value="大学生家教">大学生家教</option>
+					<option value="教育机构教师">教育机构教师</option>
+					<option value="在职教师">在职教师</option>
+					<option value="专职家教">专职家教</option>
+					<option value="辅导机构">辅导机构</option>
+				</select>
+			</p>
+			
+			<p>
+				<span>试讲时间：</span>
+				<input type="radio" name="time" value="半小时">半小时
+				<input type="radio" name="time" value="一小时">一小时
+			</p>
+			<p>
+				<span>试讲价格：</span>
+				<select name="price" id="price-choice">
+					<option value="0">免费</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+					<option value="50">50</option>
+					<option value="60">60</option>
+					<option value="70">70</option>
+					<option value="80">80</option>
+					<option value="90">90</option>
+					<option value="100">100</option>
+					<option value="120">120</option>
+					<option value="140">140</option>
+					<option value="160">160</option>
+					<option value="180">180</option>
+					<option value="200">200</option>
+					<option value="220">220</option>
+					<option value="240">240</option>
+					<option value="260">260</option>
+					<option value="280">280</option>
+					<option value="300">300</option>
+					<option value="350">350</option>
+					<option value="400">400</option>
+					<option value="500">500</option>
+				</select>
+			</p>
+			<p>
+				<span>试讲规则：</span>
+				<input type="radio" name="rule" value="1">
+				试讲不满意全额退款
+				<input type="radio" name="rule" value="2">
+				试讲不满意也收款
+			</p>
+			<p>
+				<span>授课阶段：</span>
+				<input type="checkbox" name="teach-type" value="1">
+				学前教育
+				<input type="checkbox" name="teach-type" value="2">
+				小学家教
+				<input type="checkbox" name="teach-type" value="3">
+				初中家教
+				<input type="checkbox" name="teach-type" value="4">
+				高中家教
+				<input type="checkbox" name="teach-type" value="5">
+				外语家教
+				<input type="checkbox" name="teach-type" value="6">
+				特长家教
+			</p>
+			<p>
+				<span>家教经验：</span>
+				<select name="exprience" id="exprience-choice">
+					<option value="1">一年及以下</option>
+					<option value="2">两年</option>
+					<option value="3">三年</option>
+					<option value="4">四年</option>
+					<option value="5">五年</option>
+					<option value="6">六年</option>
+					<option value="6">七年</option>
+					<option value="8">八年</option>
+					<option value="9">九年</option>
+					<option value="10">十年</option>
+					<option value="11">十年以上</option>
+				</select>
+			</p>
+			<p>
+				<span style="vertical-align:top;">简要介绍：</span>
+				<textarea style="vertical-align:top;" name="" id="introduction" cols="40" rows="5" ></textarea>
+			</p>
+			<p><span>请勾选授课时间</span></p>
+			<table class="teach-time" border="1" cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<td>授课时间</td>
+						<td>星期一</td>
+						<td>星期二</td>
+						<td>星期三</td>
+						<td>星期四</td>
+						<td>星期五</td>
+						<td>星期六</td>
+						<td>星期天</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>上午</td>
+						<td><input type="checkbox" value="Mon-M" name="time-detail"></td>
+						<td><input type="checkbox" value="Tue-M" name="time-detail"></td>
+						<td><input type="checkbox" value="Wen-M" name="time-detail"></td>
+						<td><input type="checkbox" value="Thu-M" name="time-detail"></td>
+						<td><input type="checkbox" value="Fri-M" name="time-detail"></td>
+						<td><input type="checkbox" value="Sat-M" name="time-detail"></td>
+						<td><input type="checkbox" value="Sun-M" name="time-detail"></td>
+					</tr>
+					<tr>
+						<td>下午</td>
+						<td><input type="checkbox" value="Mon-A" name="time-detail"></td>
+						<td><input type="checkbox" value="Tue-A" name="time-detail"></td>
+						<td><input type="checkbox" value="Wen-A" name="time-detail"></td>
+						<td><input type="checkbox" value="Thu-A" name="time-detail"></td>
+						<td><input type="checkbox" value="Fri-A" name="time-detail"></td>
+						<td><input type="checkbox" value="Sat-A" name="time-detail"></td>
+						<td><input type="checkbox" value="Sun-A" name="time-detail"></td>
+					</tr>
+					<tr>
+						<td>晚上</td>
+						<td><input type="checkbox" value="Mon-N" name="time-detail"></td>
+						<td><input type="checkbox" value="Tue-N" name="time-detail"></td>
+						<td><input type="checkbox" value="Wen-N" name="time-detail"></td>
+						<td><input type="checkbox" value="Thu-N" name="time-detail"></td>
+						<td><input type="checkbox" value="Fri-N" name="time-detail"></td>
+						<td><input type="checkbox" value="Sat-N" name="time-detail"></td>
+						<td><input type="checkbox" value="Sun-N" name="time-detail"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<p>
+				<input type="button" value="确认提交" class="submit-btn" >
+			</p>
+		</div>
+		<div class="teac-backpic">
+			<img src="/TutorWebsite/static/images/teach_back.png" alt="">
+		</div>
+	</div>
+	<div class="part2"></div>
+</div>
+<div class="footer">
+	<div class="footer-content"></div>
+</div>
+
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".submit-btn").click(function(){
+		
+		var teachType = "";
+		var teachTime = "";
+		var userId = GetQueryString("userId");
+		var realName = $("input[name='real-name']").val();
+		var phoneNumber = $("input[name='phone-number']").val();
+		var sex = $("input[name='sex']:checked").val();
+		var identity = $("#identity-choice").val();
+		var tryTime = $("input[name='time']:checked").val();
+		var tryPrice = $("#price-choice").val();
+		var tryRule = $("input[name='rule']:checked").val();
+		var exprience = $("#exprience-choice").val();
+		var introduction = $("#introduction").val();
+		
+		
+		$("input:checkbox[name='teach-type']:checked").each(function(i){
+			if(0 == i){
+				teachType = $(this).val();
+	       	}else{
+	       		teachType += (","+$(this).val());
+	       	}
+		});
+		
+		$("input:checkbox[name='time-detail']:checked").each(function(index){
+			if(0 == index){
+				teachTime = $(this).val();
+	       	}else{
+	       		teachTime += (","+$(this).val());
+	       	}
+		});
+		var param = {
+			"url":"/TutorWebsite/TutorDetailInfo/addDetail.do",
+			"userId":userId,
+			"realname":realName,
+			"phonenumber": phoneNumber,
+			"identity":identity,
+			"sex":sex,
+			"try_teachtime":tryTime,
+			"try_price":tryPrice,
+			"try_rule":tryRule,
+			"teachexperience":exprience,
+			"teachtype":teachType,
+			"teachtime":teachTime,
+			"introduction":introduction
+		};
+		console.log(param);
+		doInvoke(param,function(data){
+			if(data.code == "0000"){
+				window.location.href="/TutorWebsite/pages/HomePage.html";
+			}
+		});
+		
+	})
+})
+</script>
+</html>

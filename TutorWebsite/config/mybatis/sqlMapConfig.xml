@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 这是mybatis的配置文件 -->
+
+<typeAliases>
+	<!-- 批量扫描别名 -->
+	<package name="com.ssm.entity"/>
+</typeAliases>
+
+<!-- 这里还可以配置其它全局配置,比如mybatis的二级缓存\延迟加载等 -->
+<!-- 使用spring_mybatis自动扫描器时，mapper.xml文件如果和mapper.java接口在一个目录则此处不用定义mappers -->
+<!-- <mappers>
+<package name="cn.itcast.ssm.mapper" />
+</mappers> -->
+
+</configuration>

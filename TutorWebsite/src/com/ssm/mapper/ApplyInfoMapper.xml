@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.ApplyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.entity.ApplyInfo" >
+    <id column="applyId" property="applyId" jdbcType="INTEGER" />
+    <result column="recruitId" property="recruitId" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="applyTime" property="applyTime" jdbcType="VARCHAR" />
+    <result column="applyStatus" property="applyTime" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+  <!-- 新增家教信息预约信息 -->
+  <insert id="insertApplyInfo" parameterType="com.ssm.entity.ApplyInfo" >
+    insert into applyInfo (recruitId, userId)
+    values (#{recruitId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <!-- 家教信息预约者列表 -->
+  <select id="selectApplyInfoList" resultType="java.util.HashMap" parameterType="com.ssm.entity.ApplyInfo" >
+    select 
+    applyInfo.applyStatus,applyInfo.applyId,
+    user_tutordetail.realname,user_tutordetail.sex,
+    user_tutordetail.identity,user_tutordetail.try_price,
+    user_tutordetail.teachexperience
+    from user_tutordetail,applyInfo
+    where recruitId = #{recruitId,jdbcType=INTEGER} and applyInfo.userId = user_tutordetail.userId
+  </select>
+  <!-- 选中家教信息预约者 -->
+  <update id="chooseApplicant"  parameterType="com.ssm.entity.ApplyInfo" >
+    UPDATE applyinfo  
+	INNER JOIN recruitinfo  
+	ON applyinfo.recruitId = recruitinfo.recruitId 
+	SET applyinfo.applyStatus = '2', 
+	recruitinfo.recruitStatus = '2' 
+	WHERE applyinfo.applyId =  #{applyId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查出登陆者所有的预约条信息 -->
+  <select id="selectApplyList" parameterType="int" resultType="java.util.HashMap">
+  	select user.username,applyinfo.applyStatus,applyinfo.recruitId,
+  	DATE_FORMAT(applyinfo.applyTime,'%Y-%m-%d %H:%i:%s') as applyTime
+	from user,recruitinfo,applyinfo
+	where recruitinfo.userId = user.userId 
+	and applyinfo.recruitId = recruitinfo.recruitId
+	and applyinfo.userId = #{userId} 
+  </select>
+  
+  <!-- 检查登陆者是否预约该条信息 -->
+  <select id="checkApplyed" parameterType="com.ssm.entity.ApplyInfo" resultType="int">
+  	select count(*) as total from applyinfo 
+  	where recruitId = #{recruitId} and userId = #{userId}
+  </select>
+  
+</mapper>

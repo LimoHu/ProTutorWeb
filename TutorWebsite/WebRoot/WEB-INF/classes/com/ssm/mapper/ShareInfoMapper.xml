@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.ShareInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.entity.ShareInfo" >
+    <id column="shareId" property="shareId" jdbcType="INTEGER" />
+    <result column="shareinfo" property="shareinfo" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="shareTime" property="shareTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insertShareInfo" parameterType="com.ssm.entity.ShareInfo" >
+	insert into shareinfo(shareinfo,userId) 
+	values (#{shareinfo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <select id="selectShareInfoList" resultType="java.util.HashMap" parameterType="com.ssm.entity.ShareInfoQuery">
+  	select shareinfo.shareinfo,shareinfo.shareId,
+  	DATE_FORMAT(shareinfo.shareTime,'%Y-%m-%d %H:%i:%s') as shareTime,
+  	user.username from shareinfo,user
+  	where shareinfo.userId = user.userId 
+  	<if test="userId != null and userId != ''">
+  	 and user.userId = #{userId}
+  	</if>
+  	 order by shareinfo.shareId desc
+  	limit #{startIndex},#{pageSize}
+  </select>
+  <select id="selectSingleShareInfo" resultType="java.util.HashMap" parameterType="int">
+  	select shareinfo.shareinfo,shareinfo.shareId,
+  	DATE_FORMAT(shareinfo.shareTime,'%Y-%m-%d %H:%i:%s') as shareTime,
+  	user.username from shareinfo,user
+  	where shareinfo.userId = user.userId and shareinfo.shareId = #{shareId}
+  </select>
+  <select id="getShareInfoTotal" resultType="int" parameterType="int">
+  	select count(*) as total from shareinfo 
+  	<if test="userId != null and userId != ''">
+  	,user where user.userId = #{userId}
+  	</if>
+  </select>
+ </mapper>

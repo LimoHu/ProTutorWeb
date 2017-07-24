@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/tutordetail.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="tutor-detail">
+		<div class="tutor-info" >
+			<p class="title" >>>家教详细信息</span>
+			<div class="tutor-info-content"></div>
+			<script id="showtutorInfo"  type="text/x-jsrender" >
+				<div class="basic">
+					<p>
+						<span>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</span>
+						<em>{{:username}}</em>
+					</p>
+					<p>
+						<span>联系电话：</span>
+						<em>{{:phonenumber}}</em>
+					</p>
+					<p>
+						<span>所属区域：</span>
+						<em>{{:region}}</em>
+					</p>
+					<p>
+						<span>详细地址：</span>
+						<em>{{:address}}</em>
+					</p>
+				</div>
+				<div class="detail">
+					<p>
+						<span>真实姓名：</span>
+						<em>张思思</em>
+					</p>
+					<p>
+						<span>联系电话：</span>
+						<em>15927685049</em>
+					</p>
+					<p>
+						<span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+						<em>{{:sex}}</em>
+					</p>
+					<p>
+						<span>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份：</span>
+						<em>{{:identity}}</em>
+					</p>
+					<p>
+						<span>试讲时间：</span>
+						<em>一小时</em>
+					</p>
+					<p>
+						<span>试讲价格：</span>
+						{{if try_price == "0"}}
+							<em>免费</em>
+                        {{else}}
+                        	<em>{{:try_price}}元/天</em>
+                        {{/if}}
+					</p>
+					<p>
+						<span>试讲规则：</span>
+						<em>试讲不满意全额退款</em>
+					</p>
+					<p>
+						<span>授课阶段：</span>
+						<em>{{:teachtype.replace(",","，")}}</em>
+					</p>
+					<p>
+						<span>家教经验：</span>
+						<em>{{:teachexperience}}年</em>
+					</p>
+					<p></p>
+					<p style="width:600px;">
+						<span>个人说明：</span>
+						<em>{{:introduction}}</em>
+					</p>
+					<table class="teach-time" border="1" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<td>授课时间</td>
+								<td>星期一</td>
+								<td>星期二</td>
+								<td>星期三</td>
+								<td>星期四</td>
+								<td>星期五</td>
+								<td>星期六</td>
+								<td>星期天</td>
+							</tr>
+						</thead>
+						<tbody>
+							{{for #data.teachtime}}
+						</tr>
+							{{if timesolt == "M"}}
+								<td>上午</td>
+							{{else timesolt == "A"}}
+								<td>下午</td>
+							{{else}}
+								<td>晚上</td>
+							{{/if}}
+							{{if Mon == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+							{{if Tue == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+							{{if Wen == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+							{{if Thu == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+							{{if Fri == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+							{{if Sat == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+							{{if Sun == "1"}}
+								<td><span>√<span></td>
+							{{else}}
+								<td></td>
+							{{/if}}
+						</tr>
+					{{/for}}
+						</tbody>
+					</table>
+					<p>
+						<span>完成的家教数量：</span>
+						<em>2</em>
+					</p>
+					<p>
+						<span>
+							<img src="/TutorWebsite/static/images/support.svg" alt="">
+							好评：
+						</span>
+						<em>1</em>
+					</p>
+				</div>
+			</script>
+		</div>
+		<div class="tutor-pic">
+			<img src="/TutorWebsite/static/images/head_pic3.jpg" alt="">
+			<p class="name">张思思</p>
+		    <a href="javascript:TutorDetail.Collect();" class="not-collect">
+		    	<img src="/TutorWebsite/static/images/star.svg">
+		    	<em>点击收藏</em>
+	    	</a>
+	    	<a href="javascript:void(0);" class="collected" style="display:none;">
+		    	<img src="/TutorWebsite/static/images/star.svg">
+		    	<em>已收藏</em>
+	    	</a>
+		</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/tutordetail.js"></script>
+<script type="text/javascript">
+TutorDetail.initPage();
+$(function(){
+	if(CheckLogined()){
+		TutorDetail.CheckCollected();
+	}
+});
+
+</script>
+</html>

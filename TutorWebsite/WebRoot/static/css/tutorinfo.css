@@ -1,0 +1,145 @@
+.content{
+	width: 100%;
+}
+.part1{
+	width :950px;
+	height: 140px;
+	position: relative;
+	margin: 10px 200px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	font-size: 15px;
+}
+.subject,.location,.sex,.indentity{
+	margin:20px 20px;
+}
+.subject-choice,
+.location-choice,
+.sex-choice,
+.indentity-choice
+{
+	display: inline-block;
+	margin-left: 15px;
+}
+.subject-choice>li,
+.location-choice>li,
+.sex-choice>li,
+.indentity-choice>li
+{
+	display: inline-block;
+	margin-right: 0;
+}
+.subject-choice>li>span,
+.location-choice>li>span,
+.sex-choice>li>span,
+.indentity-choice>li>span
+{
+	margin-right: 5px;
+	color:#E4E4E4;
+}
+.active-choice{
+	color:#11BB30;
+}
+.part2{
+	width :950px;
+	position: relative;
+	margin: 10px 200px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	font-size: 15px;
+}
+.tutor-list{
+	width: 100%;
+}
+.tutor-pic{
+	width:100px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 20px;
+}
+.tutor-info{
+	display: inline-block;
+	vertical-align: top;
+	margin: 20px;
+	width: 750px;
+}
+.tutor-pic>img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.divide-line{
+	width: 900px;
+	height: 1px;
+	border: 1px solid #E4E4E4;
+	margin-left: 25px;
+}
+.tutor-name{
+	color:#33CC00;
+	font-weight: 600;
+}
+.tutor-name>span{
+	display: inline-block;
+	background-color: #33CC00;
+	color:white;
+	border-radius: 5px;
+	padding: 1px 5px;
+	margin-left: 20px;
+	font-weight: 500;
+}
+.important-info{
+	color:black;
+}
+.tutor-number{
+	display: inline-block;
+	padding: 0;
+	margin:0;
+}
+.tutor-number>img{
+	width: 15px;
+	height: 15px;	
+}
+.tutor-number>span{
+	color: #F87F45;	
+	font-weight: 600;
+}
+.to-details{
+	display: inline-block;
+	position: absolute;
+	right: 20px;
+	color:#11BB30;
+}
+.part3{
+	width :950px;
+	height: 50px;
+	position: relative;
+	margin-top: 30px;
+	margin-left: 200px;
+	font-size: 15px;
+	text-align: center;
+}
+.tutor-pages{
+	display: inline-block;
+	vertical-align: top;
+}
+.tutor-pages>li{
+	display: inline-block;
+	vertical-align: top;
+}
+#next-page,	
+.tutor-pages>li>input{
+	width:40px;
+	height: 25px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	color:#74777b;
+	margin-left:10px;
+}
+#next-page{
+	width:70px;
+	margin-left: 10px;
+}
+.tutor-pages>li>input.active-page{
+	color:#11BB30;
+	font-weight: 800;
+}

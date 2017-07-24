@@ -1,0 +1,221 @@
+.content{
+	width: 100%;
+}
+.part1{
+	width :950px;
+	margin: 0 200px;
+	font-size: 15px;
+	position: relative;
+}
+.shareinfo-list{
+	width: 88%;
+	display: inline-block;
+	vertical-align: top;
+}
+.shareinfo-list>li{
+	margin-top: 5px;
+	background: #F7F7F7;
+	height: 110px;
+	border:1px solid #E4E4E4;
+	position: relative;
+}
+.left-userinfo{
+	width: 70px;
+	height: 100px;
+	display: inline-block;
+	margin: 10px 0 10px 10px;
+	text-align: center;
+	vertical-align: top;
+	position:relative;
+}
+.left-userinfo>img{
+	width: 50px;
+	height: 50px;
+	margin-top: 5px;
+	border-radius: 5px;
+}
+.left-userinfo>p{
+	width: 100%;
+	text-align: center;
+	margin: 0 1px;
+}
+.center-shareinfo{
+	width: 720px;
+	height: 80px;
+	display: inline-block;
+	margin: 10px;
+	vertical-align: top;
+	box-sizing:border-box;
+	padding-right: 5px;
+	position: relative;
+}
+.center-shareinfo>p{
+	width: 100%;
+	line-height: 25px;
+	margin-top: 13px;
+	margin-bottom: 0;
+}
+.center-shareinfo>div{
+	width: 100px;
+	height: 25px;
+	margin-top: 0;
+	position: absolute;
+	right: 18px;
+}
+.center-shareinfo>div>img{
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+}
+.center-shareinfo>div>span{
+	vertical-align: middle;
+}
+
+.center-shareinfo>.to-detail{
+	position: absolute;
+	right: 15px;
+	margin: 0;
+	bottom:-15px;
+	background: #11BB30;
+	padding: 5px 10px;
+	border:1px solid #E4E4E4;
+	border-radius:3px;
+	width:80px;
+	height:20px;
+	line-height:20px;
+	letter-spacing:2px;
+	text-align:center;
+	
+}
+.center-shareinfo>.to-detail>a{
+	color: white;
+	font-size: 13px;
+	
+}
+.user-part{
+	display: inline-block;
+	vertical-align: top;
+	width: 10%;
+	height: 300px;
+	margin-top: 5px;
+	right: 0;
+	position: absolute;
+}
+.user-part>img{
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+}
+.user-part>a{
+	display: block;
+	width: 100px;
+	height: 24px;
+	line-height: 24px;
+	background: #11BB30;
+	border:1px solid #E4E4E4;
+	text-align: center;
+	margin-top: 10px;
+	border-radius: 3px;
+}
+.user-part>a>img{
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+	
+}
+.user-part>a>span{
+	color: white;
+	vertical-align: middle;
+}
+.user-part>p{
+	width: 100px;
+	text-align: center;
+}
+.user-part>p>a{
+	color: #11BB30;
+}
+.part2{
+	width :950px;
+	height: 50px;
+	position: relative;
+	margin: 20px 80px;
+	font-size: 15px;
+	text-align: center;
+}
+.tutor-pages{
+	display: inline-block;
+	vertical-algin:top;
+}
+.tutor-pages>li{
+	display: inline-block;
+	vertical-algin:top;
+}
+#next-page,	
+.tutor-pages>li>input{
+	width:40px;
+	height: 25px;
+	border:1px solid #E4E4E4;
+	background: #F7F7F7;
+	color:#74777b;
+	margin-left:10px;
+}
+#next-page{
+	width:70px;
+	margin-left: 10px;
+}
+.tutor-pages>li>input.active-page{
+	color:#11BB30;
+	font-weight: 800;
+}
+.over{
+	width: 100%;  
+    height: 150%;  
+    opacity:0.8;/*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*/  
+    filter:alpha(opacity=80);  
+    display: none;  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    z-index:1;  
+    background: silver;  
+}
+.publish-shareinfo{
+	display: none;  
+	width: 362px;
+	height: 210px;
+	border:1px solid #E4E4E4;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 12px;
+	position: absolute;
+	left:50%;
+	margin-left: -181px;
+	top:160px;
+	z-index:2;
+	background: white;
+	border-radius: 3px;
+}
+.publish-shareinfo>p{
+	color: #11BB30;
+	font-size: 15px;
+}
+.publish-shareinfo>p>input{
+	width: 70px;
+	height: 30px;
+	letter-spacing: 2px;
+	font-size: 13px;
+	border:1px solid #E4E4E4;
+	border-radius: 3px;
+}
+#publish{
+	background: #11BB30;
+	color: white;
+	
+}
+#cencel{
+	background: #F7F7F7;
+}
+.active-choice{
+	color: #11BB30;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>芯梦家教网</title>
+	<script type="text/javascript" src="/TutorWebsite/static/js/jquery-1.5.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/TutorWebsite/static/css/ShareInfoDetail.css">
+</head>
+<body>
+<div class=header>
+	<div class="logo">
+		<img src="/TutorWebsite/static/images/logo.png" alt="图标" title="图标">
+		<div class="city"></div>
+	</div>
+	<div class="nav">
+		<div class="nav-content">
+		    <ul >
+		        <li>
+		            <a href="/TutorWebsite/pages/HomePage.html" >首页</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/TutorInfo.html" >教员信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/RecruitInfo.html" >招聘信息</a>
+		        </li>
+		        <li>
+		            <a href="/TutorWebsite/pages/ShareInfo.html" >交流分享</a>
+		        </li>
+		    </ul>
+		</div>
+		<div class="nav-search">
+			<select id="search-type">
+				<option>教员</option>
+				<option>家长</option>
+			</select>
+			<input type="text" id="search-content" placeholder="请输入搜索内容">
+			<input type="button" id="search-btn" value="搜">
+		</div>
+		<div class="nav-block">
+			<div id="block"></div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="left">
+		<img src="/TutorWebsite/static/images/head_pic3.jpg" alt="">
+		<p>张思思</p>
+	</div>
+	<div class="right">
+		
+		<div class="shareinfo-content"></div>
+		<script id="shareContent"  type="text/x-jsrender" >
+			<p>主题</p>
+			<p>
+				<em>[&nbsp;{{:shareTime}}&nbsp;]</em>
+				{{:shareinfo}}
+			</p>
+		</script>
+		<div class="share-comment">
+			<p>评论列表</p>
+			<ul class="comment-list"></ul>
+			<script id="commentList"  type="text/x-jsrender" >
+				<li>
+					<p>
+						<em>{{:username}}：</em>
+						<span>
+							{{:comment}}
+						</span>
+					</p>
+					<p class="tip">
+						<span>[{{:commentTime}}]</span>
+					</p>
+				</li>
+			</script>
+			<div class="pages">
+				<ul class="tutor-pages">
+				</ul>
+			</div>
+		</div>
+		<div class="add-comment">
+			<p>添加评论</p>
+			<textarea name="comment-content" id="" cols="104" rows="6" ></textarea>
+			<input type="button" value="发表评论" onclick="ShareInfoDetail.addComment();">
+		</div>
+	</div>
+</div>
+
+
+</body>
+<script type="text/javascript" src="/TutorWebsite/static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/jsviews.min.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/common.js"></script>
+<script type="text/javascript" src="/TutorWebsite/static/js/shareinfodetail.js"></script>
+<script type="text/javascript">
+ShareInfoDetail.initPage();
+
+</script>
+</html>

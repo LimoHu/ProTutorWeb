@@ -1,0 +1,225 @@
+.content{
+	width: 100%;
+}
+.part1{
+	width :950px;
+	margin: 0 200px;
+	font-size: 15px;
+	position: relative;
+}
+.left-detail{
+	display: inline-block;
+	width: 830px;
+	vertical-align: top;
+}
+.title{
+	width: 100%;
+	height: 50px;
+}
+.title>img{
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+}
+.title>span{
+	display: inline-block;
+	color: #11BB30;
+	font-size: 20px;
+	font-weight: 600;
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-top: 15px;
+}
+.recruit-detail{
+	 width: 830px;
+	 height: 170px;
+	 background: #F7F7F7;
+	 border: 1px solid #E4E4E4;
+	 box-sizing: border-box;
+	 padding: 10px 20px;
+	 margin-top: 10px;
+}
+.recruit-detail>p,
+.student-info>p{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	margin-top: 10px;
+	color: #a4aeb9;
+}
+.recruit-detail>p.info-title,
+.student-info>p.info-title
+{
+	color:#11BB30;
+	font-size: 15px; 
+	margin: 10px 0;
+}
+.info-left{
+	display: inline-block;
+	vertical-align: top;
+	width: 260px;
+	color: #a4aeb9;
+}
+.info-right{
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	margin-left: 70px;
+	color: #a4aeb9;
+}
+.student-info{
+	width: 830px;
+	 height: 130px;
+	 border: 1px solid #E4E4E4;
+	 box-sizing: border-box;
+	 padding: 10px 20px;
+	 margin-top: 10px;
+}
+em{
+	color: #666;
+}
+.right-employee{
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+	position: absolute;
+	right: 0;
+	text-align: center;
+}
+.right-employee>img{
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+}
+.right-employee>p{
+	display: block;
+	text-align: center;
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	color: #11BB30;
+	border-radius: 5px;
+	letter-spacing: 2px;
+	margin-top: 8px;
+	border: 1px solid #E4E4E4;
+}
+.sub-btn{
+	width: 150px;
+	height: 35px;
+	background: #11BB30;
+	line-height: 35px;
+	color: white;
+	border: 1px solid #E4E4E4;
+	border-radius: 5px;
+	letter-spacing: 5px;
+	font-size: 15px;
+	font-weight: 600;
+
+}
+.over{
+	width: 100%;  
+    height: 150%;  
+    opacity:0.8;/*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*/  
+    filter:alpha(opacity=80);  
+    display: none;  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    z-index:1;  
+    background: silver;  
+}
+.over-content{
+	display: none;  
+	width: 320px;
+	height: 190px;
+	border:1px solid #E4E4E4;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 12px;
+	position: absolute;
+	left:50%;
+	margin-left: -150px;
+	top:160px;
+	z-index:2;
+	background: white;
+	border-radius: 3px;
+}
+.over-content>p.over-title{
+	font-size: 15px;
+	color: #11BB30;
+}
+.over-content>p.over-title>span{
+	font-size:5px;
+}
+.over-content>p.employee-tel{
+	letter-spacing: 2px;
+	font-size: 20px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border:1px solid #E4E4E4;
+	box-sizing: border-box;
+	padding: 3px;
+	text-align: center;
+	border-radius: 2px;
+}
+.over-btn{
+	width: 205px;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	right: 10px;
+	margin-top: 0;
+}
+.over-content>p>input{
+	width: 100px;
+	height: 30px;
+	letter-spacing: 2px;
+	font-size: 13px;
+	border:1px solid #E4E4E4;
+	border-radius: 3px;
+}
+#submit{
+	background: #11BB30;
+	color: white;
+}
+#cencel{
+	background: #F7F7F7;
+}
+td,th{border:solid #add9c0; border-width:0px 1px 1px 0px; text-align:center;}
+table{border:solid #add9c0; border-width:1px 0px 0px 1px;}
+.apply-list{
+	width:830px;
+	display:none;
+	margin-top:20px;
+}
+tr{
+	width:100%;
+	height:30px;
+}
+.apply-list>thead>tr:first-child{
+	color: #11BB30;
+	height:40px;
+	font-size:15px;
+}
+.choose-btn{
+	border:1px solid #E4E4E4;
+	border-radius: 3px;
+	background: #11BB30;
+	color: white;
+	width:50px;
+	height:25px;
+	letter-spacing:2px
+}
+.delete-btn{
+	border:1px solid #E4E4E4;
+	border-radius: 3px;
+	background: #F7F7F7;
+	width:50px;
+	height:25px;
+	letter-spacing:2px
+}
+
+	

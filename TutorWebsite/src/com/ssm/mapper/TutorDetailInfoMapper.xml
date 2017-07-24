@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.TutorDetailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.entity.TutorDetailInfo" >
+    <id column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="VARCHAR" />
+    <result column="try_teachtime" property="try_teachtime" jdbcType="VARCHAR" />
+    <result column="try_price" property="try_price" jdbcType="INTEGER" />
+    <result column="try_rule" property="try_rule" jdbcType="VARCHAR" />
+    <result column="teachtype" property="teachtype" jdbcType="VARCHAR" />
+    <result column="teachexperience" property="teachexperience" jdbcType="INTEGER" />
+    <result column="teach_timedescribe" property="teach_timedescribe" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="usertype" property="usertype" jdbcType="VARCHAR" />
+    <result column="teachtime" property="teachtime" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 新增注册教员详细信息 -->
+  <insert id="AddTutorDetailInfo" parameterType="com.ssm.entity.TutorDetailInfo" >
+    insert into user_tutordetail 
+    (userId, realname, phonenumber, sex, identity, try_teachtime,
+     try_price, try_rule, teachtype, teachexperience, teachtime, introduction)
+    values (#{userId,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, 
+    		#{phonenumber,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},
+    		#{identity,jdbcType=VARCHAR},#{try_teachtime,jdbcType=VARCHAR},
+    		#{try_price,jdbcType=INTEGER},#{try_rule,jdbcType=VARCHAR},
+    		#{teachtype,jdbcType=VARCHAR},#{teachexperience,jdbcType=INTEGER},
+    		#{teachtime,jdbcType=VARCHAR},#{introduction,jdbcType=VARCHAR})
+  </insert>
+  <!-- 教员列表 -->
+  <select id="SelectTutorDetailInfoList"  resultType="java.util.HashMap" parameterType="com.ssm.entity.PageData">
+  	select 
+  	user_tutordetail.realname,user_tutordetail.userId,
+  	user_tutordetail.sex,user_tutordetail.identity,
+  	user_tutordetail.try_teachtime,user_tutordetail.try_price,
+  	user_tutordetail.try_rule,user_tutordetail.teachtype,
+  	user_tutordetail.teachexperience,user_tutordetail.introduction
+  	from user_tutordetail 
+  	limit #{startIndex},#{pageSize}
+  </select>
+  <select id="SelectFourTutorDetailInfo"  resultType="java.util.HashMap">
+  	select 
+  	user_tutordetail.realname,user_tutordetail.userId,
+  	user_tutordetail.sex,user_tutordetail.identity,
+  	user_tutordetail.try_rule,user_tutordetail.teachtype,
+  	user_tutordetail.teachexperience,user_tutordetail.introduction
+  	from user_tutordetail limit 0,4
+  </select>
+  <!-- 得到注册教员的总数 -->
+  <select id="getTotalNumber" resultType="int">
+	  	select count(*) as totalNum from user_tutordetail
+  </select>
+  <!-- 家教详细信息 -->
+  <select id="SelectSingleTutorDetailInfo"  resultType="java.util.HashMap" parameterType="int">
+  	select user.username,user.region,user.address,user.usertype,
+  	user_tutordetail.realname,user_tutordetail.phonenumber,user_tutordetail.userId,
+  	user_tutordetail.sex,user_tutordetail.identity,
+  	user_tutordetail.try_teachtime,user_tutordetail.try_price,
+  	user_tutordetail.try_rule,user_tutordetail.teachtype,
+  	user_tutordetail.teachexperience,user_tutordetail.teachtime,user_tutordetail.introduction
+  	from user_tutordetail,user
+  	where user.userId = user_tutordetail.userId and user_tutordetail.userId = #{userId}
+  </select>
+  <update id="updateDetail" parameterType="com.ssm.entity.TutorDetailInfo">
+	update user_tutordetail set
+	realname = #{realname,jdbcType=VARCHAR},
+	phonenumber = #{phonenumber,jdbcType=VARCHAR},
+	sex = #{sex,jdbcType=VARCHAR},
+	identity = #{identity,jdbcType=VARCHAR},
+	try_price = #{try_price,jdbcType=INTEGER},
+	try_rule = #{try_rule,jdbcType=VARCHAR},
+	teachtype = #{teachtype,jdbcType=VARCHAR},
+	try_teachtime = #{try_teachtime,jdbcType=VARCHAR},
+	teachexperience = #{teachexperience,jdbcType=INTEGER},
+	teachtime = #{teachtime,jdbcType=VARCHAR}
+	where userId = #{userId}
+  </update>
+  <!-- 条件查询后的教员列表 -->
+  <select id="queryTutorInfoList"  resultType="java.util.HashMap" parameterType="com.ssm.entity.TutorQuery">
+  	select 
+  	user_tutordetail.realname,user_tutordetail.userId,
+  	user_tutordetail.sex,user_tutordetail.identity,
+  	user_tutordetail.try_teachtime,user_tutordetail.try_price,
+  	user_tutordetail.try_rule,user_tutordetail.teachtype,
+  	user_tutordetail.teachexperience,user_tutordetail.introduction
+  	from user_tutordetail 
+  	where 1=1
+  	<if test="null!=teachtype and ''!=teachtype" >
+  	 and teachtype like CONCAT('%',#{teachtype},'%' ) 	
+  	</if>
+  	<if test="null!=sex and ''!=sex" >
+  	 and sex = #{sex}	
+  	</if>
+  	<if test="null!=identity and ''!=identity" >
+  	 and identity = #{identity}	
+  	</if>
+  	limit #{startIndex},#{pageSize}
+  </select>
+  <!-- 得到注册教员的总数 -->
+  <select id="queryTotalNumber" resultType="int" parameterType="com.ssm.entity.TutorQuery">
+  	select count(*) as totalNum from user_tutordetail
+  	where 1=1
+  	<if test="null!=teachtype and ''!=teachtype" >
+  	 and teachtype like CONCAT('%',#{teachtype},'%' ) 
+  	</if>
+  	<if test="null!=sex and ''!=sex" >
+  	 and sex = #{sex}	
+  	</if>
+  	<if test="null!=identity and ''!=identity" >
+  	 and identity = #{identity}	
+  	</if>
+  </select>
+</mapper>

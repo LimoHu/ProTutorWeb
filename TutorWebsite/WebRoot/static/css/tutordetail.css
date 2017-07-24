@@ -1,0 +1,138 @@
+.content{
+	width :950px;
+	position: relative;
+	margin: 0 200px;
+}
+.tutor-detail{
+	display: inline-block;
+	vertical-align: top;
+	width: 800px;
+	border:1px solid #E4E4E4;	
+	margin-left: 65px;
+	position: relative;
+	padding: 20px 40px;
+	box-sizing: border-box;
+	background: #F7F7F7;
+	font-size: 15px;
+	margin-top: 10px;
+}
+.tutor-info
+{
+	width: 100%;
+	position: relative;
+}
+.title{
+	width: 100%;
+	height: 20px;
+	padding: 5px;
+	color: #11BB30;
+	font-size: 16px;
+	margin-top: 0;
+}
+.title>span{
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 5px;
+}
+.detail{
+	width: 100%;
+	border-top: 1px dashed #11BB30;
+	box-sizing: border-box;
+	padding-top:15px;
+}
+.detail>p{
+	display: inline-block;
+	width: 340px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0;
+	margin: 0;
+}
+.detail>p.title{
+	width: 100%;
+	height: 20px;
+	padding: 5px;
+	color: #11BB30;
+	font-size: 16px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.detail>p>span>img{
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+.detail>p>em{
+	color: #11BB30;
+}
+.tutor-pic{
+	display: inline-block;
+	vertical-align: top;
+	width: 130px;
+	height: 180px;
+	background: white;
+	position: absolute;
+	text-align: center;
+	background: white;
+	font-size: 15px;
+	top: 10px;
+	right: 50px;
+}
+.tutor-pic>img{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border:1px solid #E4E4E4;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+.tutor-pic>p{
+	display: inline-block;
+	margin-top: 15px;
+	color: #11BB30;
+	margin: 5px;
+	width:100%;
+}
+.tutor-pic>a.collected{
+	display:inline-block;
+	width:100px;
+	height:24px;
+	line-height:24px;
+	border:1px solid #11BB30;
+	background:white;
+	border-radius:3px;
+}
+.tutor-pic>a.not-collect{
+	display:inline-block;
+	width:100px;
+	height:24px;
+	line-height:24px;
+	border:1px solid #E4E4E4;
+	background:#11BB30;
+	border-radius:3px;
+	color:white;
+}
+.tutor-pic>a>img{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	margin-top:2px;
+	vertical-align: top;
+}
+
+.teach-time{
+	border: 1px solid  #E4E4E4;
+	width: 550px;
+	text-align: center;
+	margin: 20px 0;
+	background: white;
+}
+.teach-time>thead>tr{
+	height: 35px;
+}
+.teach-time>tbody>tr{
+	height: 30px;
+}
+.teach-time>tbody>tr>td>span{
+	color: #11BB30;
+}

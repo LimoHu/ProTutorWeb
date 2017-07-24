@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.CollectInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.entity.CollectInfo" >
+    <id column="collectId" property="collectId" jdbcType="INTEGER" />
+    <result column="tutorId" property="tutorId" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="collectTime" property="collectTime" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 新增家教收藏预约信息 -->
+  <insert id="insertCollectInfo" parameterType="com.ssm.entity.CollectInfo" >
+    insert into CollectInfo (tutorId, userId)
+    values (#{tutorId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <!-- 检验登陆者是否收藏该条信息 -->
+  <select id="checkCollected" parameterType="int" resultType="java.util.HashMap">
+  	select count(*) as total from CollectInfo where tutorId = #{tutorId} and userId = #{userId}
+  </select>
+  <!-- 选出登陆者所有的收藏信息 -->
+  <select id="selectCollectList" resultType="java.util.HashMap" parameterType="int">
+  	select user_tutordetail.realname,user_tutordetail.userId,
+  	DATE_FORMAT(CollectInfo.collectTime,'%Y-%m-%d %H:%i:%s') as collectTime
+	from user_tutordetail , CollectInfo 
+	where  CollectInfo.userId = #{userId} and 
+	user_tutordetail.userId = CollectInfo.tutorId order by CollectInfo.collectId desc
+	
+  </select>
+</mapper>

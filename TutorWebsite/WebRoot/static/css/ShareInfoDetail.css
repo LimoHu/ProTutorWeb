@@ -1,0 +1,168 @@
+.content{
+	width :950px;
+	position: relative;
+	margin: 20px 200px;
+}
+.left{
+	display: inline-block;
+	vertical-align: top;
+	width: 130px;
+	height: 150px;
+	background: white;
+	position: relative;
+	text-align: center;
+	background: white;
+	font-size: 15px;
+	border:1px solid #E4E4E4;
+}
+.left>img{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border:1px solid #E4E4E4;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+.left>p{
+	display: inline-block;
+	margin-top: 15px;
+	color: #11BB30;
+	margin: 5px;
+}
+.right{
+	display: inline-block;
+	vertical-align: top;
+	width: 800px;
+	margin-left: 15px;
+	position: absolute;
+	right: 0;
+	font-size: 15px;
+}
+.shareinfo-content{
+	width: 100%;
+	height: 180px;
+	vertical-align: top;
+	box-sizing:border-box;
+	position: relative;
+	background: white;	;
+	padding: 5px 15px;
+	border: 5px solid #F7F7F7;
+}
+.shareinfo-content>p{
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 0;
+	line-height: 25px;
+}
+.shareinfo-content>p>em{
+	color: #11BB30;
+	margin-right: 10px;
+}
+.shareinfo-content>div{
+	width: 100px;
+	height: 25px;
+	margin-top: 0;
+	right: 18px;
+	position: absolute;
+	bottom: 5px;
+}
+.shareinfo-content>div>img{
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+}
+.shareinfo-content>div>span{
+	vertical-align: middle;
+}
+.share-comment{
+	width: 100%;
+	vertical-align: top;
+	box-sizing:border-box;
+	position: relative;
+	background: #F7F7F7;
+	margin-top: 10px;
+	border:1px solid #E4E4E4;
+}
+.share-comment>p{
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+.comment-list>li{
+	width: 100%;
+	box-sizing:border-box;
+	padding: 5px;
+	margin-top: 0;
+	position: relative;
+	border-top:1px solid #E4E4E4;
+	background: white;
+}
+.comment-list>li>p{
+	margin: 5px;
+	box-sizing: border-box;
+	line-height: 20px;
+
+}
+.comment-list>li>p>em{
+	color: #11BB30;
+}
+.comment-list>li>p.tip>span{
+	margin-left: 620px;
+	margin-right: 10px;
+}
+.pages{
+	width :100%;
+	height: 50px;
+	position: relative;
+	font-size: 15px;
+	line-height: 50px;
+	border-top:1px solid #E4E4E4;
+}
+.tutor-pages{
+	display: inline-block;
+	margin-left: 10px;
+}
+.tutor-pages>li{
+	display: inline-block;
+}
+#next-page,	
+.tutor-pages>li>input{
+	width:40px;
+	height: 25px;
+	border:1px solid #E4E4E4;
+	background: white;
+	color:#74777b;
+}
+#next-page{
+	width:70px;
+	margin-left: 10px;
+}
+.tutor-pages>li>input.active-page{
+	color:#11BB30;
+	font-weight: 800;
+}
+.add-comment{
+	margin-top: 10px;
+	width: 100%;
+	height: 210px;
+	box-sizing:border-box;
+	position: relative;
+	background: #F7F7F7;
+	padding: 5px 15px;
+	border: 1px solid #E4E4E4;
+}
+.add-comment>p{
+	color:#11BB30;
+}
+.add-comment>input{
+	width: 130px;
+	height: 35px;
+	letter-spacing: 3px;
+	background: #11BB30;
+	color: white;
+	border: 1px solid #E4E4E4;
+	border-radius: 3px;
+	font-size: 15px;
+	font-weight: 600;
+	margin-top: 10px;
+}

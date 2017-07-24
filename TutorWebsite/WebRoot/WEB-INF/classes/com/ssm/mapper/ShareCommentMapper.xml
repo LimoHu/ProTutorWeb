@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.ShareCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.entity.ShareComment" >
+    <id column="shareId" property="shareId" jdbcType="INTEGER" />
+    <result column="shareId" property="shareId" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="commentTime" property="commentTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insertCommentInfo" parameterType="com.ssm.entity.ShareComment">
+  	insert into sharecomment (shareId,userId,comment) 
+  	values (#{shareId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{comment,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectCommentList" parameterType="com.ssm.entity.CommentPage" resultType="java.util.HashMap">
+  	select sharecomment.comment,
+	user.username,
+	DATE_FORMAT(sharecomment.commentTime,'%Y-%m-%d %H:%i:%s') as commentTime
+	from sharecomment,user
+	where user.userId = sharecomment.userId and sharecomment.shareId = #{shareId}
+	order by sharecomment.commentId desc 
+	limit #{startIndex},#{pageSize}
+  </select>
+  <select id="getCommentTotal" resultType="int">
+  	select count(*) as total from sharecomment where sharecomment.shareId = #{shareId}
+  </select>
+ </mapper>

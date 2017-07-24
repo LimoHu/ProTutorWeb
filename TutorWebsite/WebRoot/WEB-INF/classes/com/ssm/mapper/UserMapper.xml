@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.entity.User" >
+    <id column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="usertype" property="usertype" jdbcType="VARCHAR" />
+    <result column="publishnumber" property="publishnumber" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="VARCHAR" />
+    <result column="try_teachtime" property="try_teachtime" jdbcType="VARCHAR" />
+    <result column="try_price" property="try_price" jdbcType="INTEGER" />
+    <result column="try_rule" property="try_rule" jdbcType="VARCHAR" />
+    <result column="teachtype" property="teachtype" jdbcType="VARCHAR" />
+    <result column="teachexperience" property="teachexperience" jdbcType="INTEGER" />
+    <result column="teach_timedescribe" property="teach_timedescribe" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+  <!-- 新增注册信息 -->
+  <insert id="insertRegistorInfo" parameterType="com.ssm.entity.User" >
+  	<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="userId">
+	SELECT LAST_INSERT_ID() AS userId
+	</selectKey>
+    insert into user (username, password, phonenumber, region, address, usertype)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    		#{phonenumber,jdbcType=VARCHAR},#{region,jdbcType=VARCHAR},
+    		#{address,jdbcType=VARCHAR},#{usertype,jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 登陆验证 -->
+  <select id="selectLoginUserInfo" resultType="java.util.HashMap" parameterType="com.ssm.entity.User" >
+    select userId,userName,usertype,status
+    from user
+    where phonenumber = #{phonenumber} 
+    and password = #{password}
+  </select>
+  
+  <!-- 学员用户个人信息 -->
+  <select id="selectStudentInfo" resultType="java.util.HashMap" parameterType="com.ssm.entity.User" >
+    select username,password,phonenumber,region,address
+    from user
+    where userId = #{userId}
+  </select>
+  
+  <!-- 家教用户个人信息 -->
+  <select id="selectTutorInfo" resultType="java.util.HashMap" parameterType="com.ssm.entity.User" >
+    select user.username,user.password,user.region,user.address,
+  	user_tutordetail.realname,user_tutordetail.phonenumber,user_tutordetail.userId,
+  	user_tutordetail.sex,user_tutordetail.identity,
+  	user_tutordetail.try_teachtime,user_tutordetail.try_price,
+  	user_tutordetail.try_rule,user_tutordetail.teachtype,
+  	user_tutordetail.teachexperience,user_tutordetail.teachtime
+  	from user_tutordetail,user
+  	where user.userId = user_tutordetail.userId and user.userId = #{userId}
+  </select>
+  
+  <!-- 用户列表 -->
+  <select id="selectUserList" resultType="java.util.HashMap" parameterType="com.ssm.entity.PageData">
+    select userId,userName,password,phonenumber,region,address,usertype,
+    DATE_FORMAT(registerTime,'%Y-%m-%d %H:%i:%s') as registerTime,status
+    from user
+    where usertype in ('1','2') limit #{startIndex},#{pageSize}
+  </select>
+  
+  <!-- 除管理员外的用户总数 -->
+  <select id="selectUserTotal" resultType="int" >
+    select count(*) from user where usertype in ('1','2')
+  </select>
+  <delete id="deleteUser" parameterType="int">
+  	delete from user where userId = #{userId}
+  </delete>
+  <update id="updateUserStatus">
+  	update user set status = #{status} where userId = #{userId};
+  </update>
+  <update id="updateUserInfo" parameterType="com.ssm.entity.User">
+    update user 
+    <set > 
+  	  <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userId}
+  </update>
+</mapper>

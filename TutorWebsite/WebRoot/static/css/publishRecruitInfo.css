@@ -1,0 +1,67 @@
+.content{
+	width: 100%;
+}
+.part1{
+	width :950px;
+	position: relative;
+	margin: -20px 150px 5px ;
+}
+.part1>p{
+	font-size: 0.7em;
+	background: #00CC00;
+	color: white;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 3px;
+}
+.part1>p>span{
+	margin-left: 18px;
+}
+.part2{
+	width :950px;
+	height: 625px;
+	position: relative;
+	margin: 10px 150px;
+	background: #F7F7F7;
+	border:1px solid #E4E4E4;
+}
+.part2>p{
+	margin-left: 40px;
+	font-size: 0.7em;
+}
+.part2>p.prompt{
+	margin-top: 30px;
+}
+.part2>p.prompt>span{
+	color: red;
+	border-bottom: 1px solid #ccc;
+}
+.part2>.bic-img{
+	display: inline-block;
+	position: absolute;
+	width: 450px;
+	height: 450px;
+	right: 0;
+	bottom: 0;
+}
+textarea{
+	vertical-align: top;
+}
+.sub-btn{
+	margin: 25px auto;
+	width:230px;
+	height:35px;
+	background-color: #11BB30;
+	border:0;
+	color: white;
+	font-size: 1.2em;
+	font-weight: 600;
+	border-radius: 3%;
+	cursor: pointer; 
+}
+.divide-line{
+	width: 500px;
+	height: 1px;
+	border: 1px solid #11BB30;
+	margin-left: 25px;
+}
